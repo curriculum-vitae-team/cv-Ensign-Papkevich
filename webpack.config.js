@@ -19,8 +19,10 @@ module.exports = {
       {
         test: /\.tsx?$/,
         loader: "esbuild-loader",
+        include: [resolve(__dirname, "src")],
+        exclude: /node_modules/,
         options: {
-          loader: "ts",
+          loader: "tsx",
           target: "es6",
         },
       },

@@ -14,7 +14,6 @@
     "typeRoots": ["./src/@types", "./node_modules/@types"],
     "module": "esnext",
     "resolveJsonModule": true,
-    "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true
   },
