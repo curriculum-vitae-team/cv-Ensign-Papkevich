@@ -1,11 +1,15 @@
+const path = require("path")
+require("dotenv").config()
+const { EnvironmentPlugin } = require("webpack")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const ESLintPlugin = require("eslint-webpack-plugin")
 
 module.exports = {
-  entry: "./src/index.ts",
+  entry: "./src/index.tsx",
   plugins: [
+    new EnvironmentPlugin(["GRAPHQL_API_URL"]),
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
+      template: "./public/index.html",
     }),
     new ESLintPlugin({
       emitError: true,
@@ -19,7 +23,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         loader: "esbuild-loader",
-        include: [resolve(__dirname, "src")],
+        include: [path.resolve(__dirname, "src")],
         exclude: /node_modules/,
         options: {
           loader: "tsx",
