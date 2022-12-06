@@ -12,7 +12,7 @@ module.exports = merge(config, {
     static: {
       directory: path.join(__dirname, "dist"),
     },
-    port: 9000,
+    port: 3000,
     hot: true,
     open: true,
     liveReload: true,
