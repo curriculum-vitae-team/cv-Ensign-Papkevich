@@ -22,16 +22,18 @@ export const Signup = () => {
 
   const [signup, { data, loading, error }] = useMutation(SIGNUP_MUTATION, {
     onCompleted: () => {
-      navigate("/example")
+      console.log(data)
+      navigate("/login")
       // TO_DO: store access_token
+      // returns undefined
     },
     errorPolicy: "all",
   })
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     delete data.confirm_password
     console.log(data)
-    signup({
+    await signup({
       variables: {
         auth: {
           email: data.email,
