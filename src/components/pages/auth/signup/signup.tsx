@@ -1,4 +1,4 @@
-import { useLazyQuery } from "@apollo/client"
+import { useMutation } from "@apollo/client"
 import { Box, Typography, TextField, Button } from "@mui/material"
 import { SIGNUP_MUTATION } from "../../../../graphql/mutations"
 import { Link, useNavigate } from "react-router-dom"
@@ -12,13 +12,34 @@ interface Inputs {
 }
 
 export const Signup = () => {
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm<Inputs>()
-  const onSubmit = (data) => console.log(data)
+
+  const [signup, { data, loading, error }] = useMutation(SIGNUP_MUTATION, {
+    onCompleted: ({ signup }) => {
+      localStorage.setItemAuthorization, "Bearer ".concat(signup.access_token)
+      navigate("/example")
+    },
+    errorPolicy: "all",
+  })
+
+  const onSubmit = (data) => {
+    delete data.confirm_password
+    console.log(data)
+    signup({
+      variables: {
+        auth: {
+          email: data.email,
+          password: data.password,
+        },
+      },
+    })
+  }
   return (
     <Box
       sx={{
