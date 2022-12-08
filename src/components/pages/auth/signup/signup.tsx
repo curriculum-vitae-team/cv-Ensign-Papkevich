@@ -21,9 +21,9 @@ export const Signup = () => {
   } = useForm<Inputs>()
 
   const [signup, { data, loading, error }] = useMutation(SIGNUP_MUTATION, {
-    onCompleted: ({ signup }) => {
-      localStorage.setItemAuthorization, "Bearer ".concat(signup.access_token)
+    onCompleted: () => {
       navigate("/example")
+      // TO_DO: store access_token
     },
     errorPolicy: "all",
   })
@@ -59,24 +59,28 @@ export const Signup = () => {
         label="Email"
         variant="outlined"
         sx={{ m: 2, width: 1 / 4 }}
-        {...register("email", { required: "This is required." })}
+        {...register("email", { required: "This is required" })}
       />
       <ErrorMessage
         errors={errors}
         name="email"
-        render={({ message }) => <p>{message}</p>}
+        render={({ message }) => (
+          <Typography variant="body2">{message}</Typography>
+        )}
       />
       <TextField
         id="outlined-basic"
         label="Password"
         variant="outlined"
         sx={{ m: 2, width: 1 / 4 }}
-        {...register("password", { required: "This is required." })}
+        {...register("password", { required: "This is required" })}
       />
       <ErrorMessage
         errors={errors}
         name="password"
-        render={({ message }) => <p>{message}</p>}
+        render={({ message }) => (
+          <Typography variant="body2">{message}</Typography>
+        )}
       />
       <TextField
         id="outlined-basic"
@@ -95,7 +99,9 @@ export const Signup = () => {
       <ErrorMessage
         errors={errors}
         name="confirm_password"
-        render={({ message }) => <p>{message}</p>}
+        render={({ message }) => (
+          <Typography variant="body2">{message}</Typography>
+        )}
       />
 
       <Button
