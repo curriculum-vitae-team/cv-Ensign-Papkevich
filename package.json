@@ -27,6 +27,7 @@
     "compression-webpack-plugin": "^10.0.0",
     "css-loader": "^6.7.1",
     "dotenv": "^16.0.3",
+    "dotenv-webpack": "^8.0.1",
     "esbuild": "^0.15.13",
     "esbuild-jest": "^0.5.0",
     "esbuild-loader": "^2.20.0",
