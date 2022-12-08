@@ -23,9 +23,14 @@ export const Signup = () => {
   const [signup, { data, loading, error }] = useMutation(SIGNUP_MUTATION, {
     onCompleted: () => {
       console.log(data)
-      navigate("/login")
-      // TO_DO: store access_token
       // returns undefined
+      if (data) {
+        const prefix = "Bearer "
+        localStorage.setItem("token", prefix.concat(data.access_token))
+      }
+      console.log(data)
+      console.log(data?.access_token)
+      navigate("/login")
     },
     errorPolicy: "all",
   })
