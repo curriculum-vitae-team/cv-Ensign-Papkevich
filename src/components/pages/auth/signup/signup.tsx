@@ -21,15 +21,11 @@ export const Signup = () => {
   } = useForm<Inputs>()
 
   const [signup, { data, loading, error }] = useMutation(SIGNUP_MUTATION, {
-    onCompleted: () => {
-      console.log(data)
-      // returns undefined
+    onCompleted: (data) => {
       if (data) {
         const prefix = "Bearer "
-        localStorage.setItem("token", prefix.concat(data.access_token))
+        localStorage.setItem("token", prefix.concat(data.signup.access_token))
       }
-      console.log(data)
-      console.log(data?.access_token)
       navigate("/login")
     },
     errorPolicy: "all",
