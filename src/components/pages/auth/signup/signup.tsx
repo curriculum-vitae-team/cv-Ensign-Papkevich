@@ -4,7 +4,6 @@ import { SIGNUP_MUTATION } from "../../../../graphql/mutations"
 import { Link, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { ErrorMessage } from "@hookform/error-message"
-import { useState } from "react"
 
 interface Inputs {
   email: string
@@ -14,7 +13,7 @@ interface Inputs {
 
 export const Signup = () => {
   const navigate = useNavigate()
-  const [backendError, setBackendError] = useState("")
+
   const {
     register,
     handleSubmit,
@@ -36,7 +35,30 @@ export const Signup = () => {
     if (
       error.message.includes("duplicate key value violates unique constraint")
     ) {
-      return <h2>User with this email already exists</h2>
+      return (
+        <Box
+          sx={{
+            width: "100%",
+            height: "100%",
+            backgroundColor: "#da645a",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <Typography variant="h4" color="white">
+            User with this email already exists
+          </Typography>
+          <Button
+            color="secondary"
+            sx={{ color: "blanchedalmond" }}
+            onClick={() => navigate("/login")}
+          >
+            Go to the Login page
+          </Button>
+        </Box>
+      )
     }
   }
 
@@ -67,6 +89,7 @@ export const Signup = () => {
     >
       <Typography variant="h2">Sign Up</Typography>
       <Typography variant="body1">Sign up and enjoy the service</Typography>
+
       <TextField
         id="outlined-basic"
         label="Email"
@@ -138,7 +161,6 @@ export const Signup = () => {
       >
         Sign Up
       </Button>
-      <Typography variant="body2"></Typography>
     </Box>
   )
 }
