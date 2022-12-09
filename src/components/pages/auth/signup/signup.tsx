@@ -87,8 +87,12 @@ export const Signup = () => {
         flexDirection: "column",
       }}
     >
-      <Typography variant="h2">Sign Up</Typography>
-      <Typography variant="body1">Sign up and enjoy the service</Typography>
+      <Typography variant="h2" color="white">
+        Sign Up
+      </Typography>
+      <Typography variant="body1" color="white">
+        Sign up and enjoy the service
+      </Typography>
 
       <TextField
         id="outlined-basic"
@@ -108,7 +112,9 @@ export const Signup = () => {
         errors={errors}
         name="email"
         render={({ message }) => (
-          <Typography variant="body2">{message}</Typography>
+          <Typography variant="body2" color="white">
+            {message}
+          </Typography>
         )}
       />
       <TextField
@@ -129,7 +135,9 @@ export const Signup = () => {
         errors={errors}
         name="password"
         render={({ message }) => (
-          <Typography variant="body2">{message}</Typography>
+          <Typography variant="body2" color="white">
+            {message}
+          </Typography>
         )}
       />
       <TextField
@@ -150,7 +158,9 @@ export const Signup = () => {
         errors={errors}
         name="confirm_password"
         render={({ message }) => (
-          <Typography variant="body2">{message}</Typography>
+          <Typography variant="body2" color="white">
+            {message}
+          </Typography>
         )}
       />
 
@@ -160,6 +170,16 @@ export const Signup = () => {
         onClick={handleSubmit(onSubmit)}
       >
         Sign Up
+      </Button>
+      <Typography variant="body1" color="white">
+        Already a user? Go to the Login page
+      </Typography>
+      <Button
+        color="secondary"
+        sx={{ color: "blanchedalmond" }}
+        onClick={() => navigate("/login")}
+      >
+        Login
       </Button>
     </Box>
   )
