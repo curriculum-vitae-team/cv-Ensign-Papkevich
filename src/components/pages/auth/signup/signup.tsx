@@ -1,9 +1,10 @@
-import { useMutation } from "@apollo/client"
+import { ApolloError, useMutation } from "@apollo/client"
 import { Box, Typography, TextField, Button } from "@mui/material"
 import { SIGNUP_MUTATION } from "../../../../graphql/mutations"
 import { Link, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { ErrorMessage } from "@hookform/error-message"
+import { useState } from "react"
 
 interface Inputs {
   email: string
@@ -13,6 +14,7 @@ interface Inputs {
 
 export const Signup = () => {
   const navigate = useNavigate()
+  const [backendError, setBackendError] = useState("")
   const {
     register,
     handleSubmit,
@@ -25,11 +27,18 @@ export const Signup = () => {
       if (data) {
         const prefix = "Bearer "
         localStorage.setItem("token", prefix.concat(data.signup.access_token))
+        navigate("/login")
       }
-      navigate("/login")
     },
     errorPolicy: "all",
   })
+  if (error) {
+    if (
+      error.message.includes("duplicate key value violates unique constraint")
+    ) {
+      return <h2>User with this email already exists</h2>
+    }
+  }
 
   const onSubmit = async (data) => {
     delete data.confirm_password
@@ -43,6 +52,7 @@ export const Signup = () => {
       },
     })
   }
+
   return (
     <Box
       sx={{
@@ -62,7 +72,14 @@ export const Signup = () => {
         label="Email"
         variant="outlined"
         sx={{ m: 2, width: 1 / 4 }}
-        {...register("email", { required: "This is required" })}
+        {...register("email", {
+          required: "This is required",
+          pattern: {
+            value:
+              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+            message: "Please enter a valid email",
+          },
+        })}
       />
       <ErrorMessage
         errors={errors}
@@ -76,7 +93,14 @@ export const Signup = () => {
         label="Password"
         variant="outlined"
         sx={{ m: 2, width: 1 / 4 }}
-        {...register("password", { required: "This is required" })}
+        {...register("password", {
+          required: "This is required",
+          validate: (val: string) => {
+            if (val.length <= 5) {
+              return "Password must be be at least 5 characters"
+            }
+          },
+        })}
       />
       <ErrorMessage
         errors={errors}
@@ -114,6 +138,7 @@ export const Signup = () => {
       >
         Sign Up
       </Button>
+      <Typography variant="body2"></Typography>
     </Box>
   )
 }
