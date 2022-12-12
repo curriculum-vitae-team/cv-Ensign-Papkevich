@@ -1,0 +1,15 @@
+node_modules
+
+# production
+/build
+/dist
+
+# documentation
+/docs
+
+# misc
+.DS_Store
+.vscode
+webStorm.config.js
+.idea
+.env
