@@ -2,7 +2,7 @@ import { useLazyQuery } from "@apollo/client"
 import { Box, Typography, TextField, Button } from "@mui/material"
 import { LOGIN_QUERY } from "../../../../graphql/queries"
 import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 export const Login = () => {
   const navigate = useNavigate()
@@ -17,7 +17,7 @@ export const Login = () => {
       password: formState.password,
     },
     onCompleted: ({ login }) => {
-      localStorage.setItemAuthorization, "Bearer ".concat(login.access_token)
+      localStorage.setItem("access_token", login.access_token)
       navigate("/example")
     },
   })
