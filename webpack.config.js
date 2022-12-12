@@ -1,12 +1,12 @@
 const path = require("path")
-require("dotenv").config()
-const { EnvironmentPlugin } = require("webpack")
+const Dotenv = require("dotenv-webpack")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const ESLintPlugin = require("eslint-webpack-plugin")
 
 module.exports = {
   entry: "./src/index.tsx",
   plugins: [
+    new Dotenv(),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
