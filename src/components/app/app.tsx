@@ -6,11 +6,11 @@ import theme from "./theme"
 
 export const App = () => {
   return (
-    <ThemeProvider theme={theme}>
       <ApolloProvider client={client}>
+            <ThemeProvider theme={theme}>
         <Router />
         <CssBaseline />
+        </ThemeProvider>
       </ApolloProvider>
-    </ThemeProvider>
   )
 }
