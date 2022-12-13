@@ -22,17 +22,22 @@ export const theme = createTheme({
       styleOverrides: {
         body: {
           margin: 0,
+          height: "100%",
           backgroundColor: "#FFFFFF",
         },
         "#root": {
           display: "flex",
           flexDirection: "column",
+          //TODO нужно вынести отюда этот height. На моей страница из-за него просадки есть.
           height: "100vh",
           paddingTop: 64,
         },
         form: {
           "& > .MuiTextField-root": {
             marginBottom: 20,
+          },
+          html: {
+            height: "100%",
           },
         },
       },
