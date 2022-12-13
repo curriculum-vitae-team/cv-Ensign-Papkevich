@@ -26,7 +26,10 @@
     "react-router-dom": "^6.4.4"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@fortawesome/react-fontawesome": "^0.2.0",
+=======
+>>>>>>> 7b9d6c0c1fefd741227e6796f1f82bb80f9e5d44
     "@types/jest": "^29.2.2",
     "@types/node": "^18.11.10",
     "@types/react": "^18.0.25",
@@ -46,7 +49,10 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-webpack-plugin": "^3.2.0",
+<<<<<<< HEAD
     "font-awesome": "^4.7.0",
+=======
+>>>>>>> 7b9d6c0c1fefd741227e6796f1f82bb80f9e5d44
     "html-webpack-plugin": "^5.5.0",
     "jest": "^29.3.1",
     "prettier": "^2.7.1",
