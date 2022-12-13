@@ -4,6 +4,7 @@ import { SIGNUP_MUTATION } from "../../../../graphql/mutations"
 import { Link, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { SignUpFormValues } from "./signup.types"
+import * as Styled from "./signup.styles"
 
 export const Signup = () => {
   const navigate = useNavigate()
@@ -80,97 +81,74 @@ export const Signup = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Box
-        sx={{
-          width: "100%",
-          height: "100%",
-          backgroundColor: "#da645a",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-        }}
-      >
-        <Typography variant="h2" color="white">
-          Sign Up
-        </Typography>
+    <Styled.Form onSubmit={handleSubmit(onSubmit)}>
+      <Typography variant="h2" textAlign="center" sx={{ mb: 3 }}>
+        Sign Up
+      </Typography>
 
-        <Typography variant="body1" color="white">
-          Sign up and enjoy the service
-        </Typography>
+      <Typography variant="body1" textAlign="center" sx={{ mb: 5 }}>
+        Sign up and enjoy the service
+      </Typography>
 
-        <TextField
-          id="outlined-basic"
-          label="Email"
-          variant="outlined"
-          sx={{ m: 2, width: 1 / 4 }}
-          error={!!errors.email}
-          helperText={errors?.email?.message}
-          {...register("email", {
-            required: "This is required",
-            pattern: {
-              value:
-                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-              message: "Please enter a valid email",
-            },
-          })}
-        />
+      <TextField
+        id="outlined-basic"
+        label="Email"
+        variant="outlined"
+        error={!!errors.email}
+        helperText={errors?.email?.message}
+        {...register("email", {
+          required: "This is required",
+          pattern: {
+            value:
+              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+            message: "Please enter a valid email",
+          },
+        })}
+      />
 
-        <TextField
-          id="outlined-basic"
-          label="Password"
-          variant="outlined"
-          sx={{ m: 2, width: 1 / 4 }}
-          error={!!errors.password}
-          helperText={errors?.password?.message}
-          {...register("password", {
-            required: "This is required",
-            validate: (val: string) => {
-              if (val.length <= 5) {
-                return "Password must be be at least 5 characters"
-              }
-            },
-          })}
-        />
+      <TextField
+        id="outlined-basic"
+        label="Password"
+        variant="outlined"
+        error={!!errors.password}
+        helperText={errors?.password?.message}
+        {...register("password", {
+          required: "This is required",
+          validate: (val: string) => {
+            if (val.length <= 5) {
+              return "Password must be be at least 5 characters"
+            }
+          },
+        })}
+      />
 
-        <TextField
-          id="outlined-basic"
-          label="Confirm password"
-          variant="outlined"
-          sx={{ m: 2, width: 1 / 4 }}
-          error={!!errors.confirm_password}
-          helperText={errors?.confirm_password?.message}
-          {...register("confirm_password", {
-            required: "This is required",
-            validate: (val: string) => {
-              if (getValues("password") != val) {
-                return "Passwords do no match"
-              }
-            },
-          })}
-        />
+      <TextField
+        id="outlined-basic"
+        label="Confirm password"
+        variant="outlined"
+        error={!!errors.confirm_password}
+        helperText={errors?.confirm_password?.message}
+        {...register("confirm_password", {
+          required: "This is required",
+          validate: (val: string) => {
+            if (getValues("password") != val) {
+              return "Passwords do no match"
+            }
+          },
+        })}
+      />
 
-        <Button
-          type="submit"
-          color="secondary"
-          sx={{ color: "blanchedalmond" }}
-        >
-          Sign Up
-        </Button>
+      <Button type="submit" color="secondary">
+        Sign Up
+      </Button>
 
-        <Typography variant="body1" color="white">
-          Already a user? Go to the Login page
-        </Typography>
+      <Typography variant="body1" textAlign="center">
+        Already a user? Go to the Login page
+      </Typography>
 
-        <Button
-          color="secondary"
-          sx={{ color: "blanchedalmond" }}
-          onClick={navigateToLoginPage}
-        >
-          Login
-        </Button>
-      </Box>
-    </form>
+      <Button color="secondary" onClick={navigateToLoginPage}>
+        Login
+      </Button>
+    </Styled.Form>
   )
 }
