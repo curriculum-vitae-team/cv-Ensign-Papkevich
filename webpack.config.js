@@ -1,10 +1,5 @@
 const path = require("path")
-<<<<<<< HEAD
-const dotenv = require("dotenv-webpack")
-const { EnvironmentPlugin } = require("webpack")
-=======
 const Dotenv = require("dotenv-webpack")
->>>>>>> 007e62b (Minor changes)
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const ESLintPlugin = require("eslint-webpack-plugin")
 
@@ -21,7 +16,6 @@ module.exports = {
       failOnError: true,
       extensions: [".ts", ".tsx", ".js"],
     }),
-    new dotenv(),
   ],
   module: {
     rules: [
