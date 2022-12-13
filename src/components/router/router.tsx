@@ -7,27 +7,11 @@ export const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/login"
-          element={
-            localStorage.getItem("access_token") == null ? (
-              <Login />
-            ) : (
-              <Example />
-            )
-          }
-        />
-        <Route
-          path="/"
-          element={
-            localStorage.getItem("access_token") == null ? (
-              <Login />
-            ) : (
-              <Example />
-            )
-          }
-        />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/auth">
+          <Route path="/auth/login" element={<Login />} />
+          <Route path="/auth/signup" element={<Signup />} />
+        </Route>
+        <Route path="/" element={<Login />} />
         <Route path="/example" element={<Example />} />
       </Routes>
     </BrowserRouter>
