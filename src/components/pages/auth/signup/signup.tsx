@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { SignUpFormValues } from "./signup.types"
 import * as Styled from "./signup.styles"
+import { PasswordInputField } from "../password-input"
 
 export const Signup = () => {
   const navigate = useNavigate()
@@ -24,14 +25,14 @@ export const Signup = () => {
       if (data) {
         const prefix = "Bearer "
         localStorage.setItem("token", prefix.concat(data.signup.access_token))
-        navigate("/login")
+        navigate("/auth/login")
       }
     },
     errorPolicy: "all",
   })
 
   const navigateToLoginPage = () => {
-    navigate("/login")
+    navigate("/auth/login")
   }
 
   //TO_DO : add errors from backend (alerts https://mui.com/material-ui/react-alert/)
@@ -106,7 +107,7 @@ export const Signup = () => {
         })}
       />
 
-      <TextField
+      <PasswordInputField
         id="outlined-basic"
         label="Password"
         variant="outlined"
@@ -122,7 +123,7 @@ export const Signup = () => {
         })}
       />
 
-      <TextField
+      <PasswordInputField
         id="outlined-basic"
         label="Confirm password"
         variant="outlined"
