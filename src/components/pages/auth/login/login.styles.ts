@@ -1,5 +1,5 @@
 import { styled } from "@mui/material"
-import { Button, TextField, Link } from "@material-ui/core/"
+import { Button, TextField, Link } from "@mui/material"
 
 export const form = styled("form")({
   width: "100%",
