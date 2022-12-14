@@ -1,9 +1,6 @@
 import { styled } from "@mui/material"
 import { Button, TextField, Link } from "@mui/material"
-<<<<<<< HEAD
-=======
 import { PasswordInputField } from "../password-input"
->>>>>>> feature/password_visibility
 
 export const Form = styled("form")({
   width: "100%",
