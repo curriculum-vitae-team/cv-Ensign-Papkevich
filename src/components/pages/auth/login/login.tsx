@@ -22,7 +22,7 @@ export const Login = () => {
     },
   })
   return (
-    <Styled.form
+    <Styled.Form
       //TODO is this okay???
       onSubmit={handleSubmit((data) => {
         doLogIn({
@@ -35,24 +35,24 @@ export const Login = () => {
       //TODO is this okay???
     >
       <Typography variant="h2">Welcome back!</Typography>
-      <Styled.textField
+      <Styled.TextFieldMod
         {...register("email")}
         id="outlined-basic"
         label="login"
         variant="outlined"
       />
-      <Styled.passwordField
+      <Styled.PasswordField
         {...register("password")}
         id="outlined-basic"
         label="password"
         variant="outlined"
       />
-      <Styled.link href="/auth/signup" underline="none">
+      <Styled.LinkMod href="/auth/signup" underline="none">
         Doesn't have an account yet? Register now!
-      </Styled.link>
-      <Styled.button type="submit" color="secondary">
+      </Styled.LinkMod>
+      <Styled.ButtonMod type="submit" color="secondary">
         Let's go
-      </Styled.button>
-    </Styled.form>
+      </Styled.ButtonMod>
+    </Styled.Form>
   )
 }

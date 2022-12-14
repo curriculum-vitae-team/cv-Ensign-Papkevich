@@ -2,7 +2,7 @@ import { styled } from "@mui/material"
 import { Button, TextField, Link } from "@mui/material"
 import { PasswordInputField } from "../password-input"
 
-export const form = styled("form")({
+export const Form = styled("form")({
   width: "100%",
   height: "100%",
   backgroundColor: "#da645a",
@@ -12,21 +12,21 @@ export const form = styled("form")({
   flexDirection: "column",
 })
 
-export const textField = styled(TextField)({
+export const TextFieldMod = styled(TextField)({
   margin: 2,
   width: "25%",
 })
 
-export const passwordField = styled(PasswordInputField)({
+export const PasswordField = styled(PasswordInputField)({
   margin: 2,
   width: "25%",
 })
 
-export const button = styled(Button)({
+export const ButtonMod = styled(Button)({
   color: "blanchedalmond",
 })
 
-export const link = styled(Link)({
+export const LinkMod = styled(Link)({
   color: "#000",
   margin: "1%",
 })
