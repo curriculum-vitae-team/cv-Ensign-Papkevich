@@ -1,16 +1,16 @@
 import { ApolloProvider } from "@apollo/client"
+import { CssBaseline, ThemeProvider } from "@mui/material/"
 import { client } from "../../graphql/client"
 import { Router } from "../router/router"
 import { theme } from "./app.theme"
-import { ThemeProvider, CssBaseline } from "@mui/material"
 
 export const App = () => {
   return (
-    <ApolloProvider client={client}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
+    <ThemeProvider theme={theme}>
+      <ApolloProvider client={client}>
         <Router />
-      </ThemeProvider>
-    </ApolloProvider>
+        <CssBaseline />
+      </ApolloProvider>
+    </ThemeProvider>
   )
 }

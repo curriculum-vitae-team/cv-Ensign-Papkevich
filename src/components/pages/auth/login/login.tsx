@@ -1,73 +1,58 @@
 import { useLazyQuery } from "@apollo/client"
-import { Box, Typography, TextField, Button } from "@mui/material"
+import { Typography } from "@mui/material"
 import { LOGIN_QUERY } from "../../../../graphql/queries"
-import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import * as Styled from "./login.styles"
+import { useForm } from "react-hook-form"
+import { access_token } from "../../auth/reactiveComponent"
+
+//TODO make show pass btn
+//TODO validate that email or pass field is not empty
 
 export const Login = () => {
   const navigate = useNavigate()
-  const [formState, setFormState] = useState({
-    email: "",
-    password: "",
-  })
 
-  const [login] = useLazyQuery(LOGIN_QUERY, {
-    variables: {
-      email: formState.email,
-      password: formState.password,
-    },
+  //TODO use interface type after merge
+  const { register, handleSubmit } = useForm()
+
+  const [doLogIn] = useLazyQuery(LOGIN_QUERY, {
     onCompleted: ({ login }) => {
-      localStorage.setItem("access_token", login.access_token)
+      access_token(login.access_token)
       navigate("/example")
     },
   })
-
   return (
-    <Box
-      sx={{
-        width: "100%",
-        height: "100%",
-        backgroundColor: "#da645a",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-      }}
+    <Styled.form
+      //TODO is this okay???
+      onSubmit={handleSubmit((data) => {
+        doLogIn({
+          variables: {
+            email: data.email,
+            password: data.password,
+          },
+        })
+      })}
+      //TODO is this okay???
     >
       <Typography variant="h2">Welcome back!</Typography>
-      <TextField
+      <Styled.textField
+        {...register("email")}
         id="outlined-basic"
         label="login"
         variant="outlined"
-        sx={{ m: 2, width: 1 / 4 }}
-        onChange={(e) =>
-          setFormState({
-            ...formState,
-            email: e.target.value,
-          })
-        }
       />
-      <TextField
+      <Styled.textField
+        {...register("password")}
         id="outlined-basic"
         label="password"
         variant="outlined"
-        sx={{ m: 2, width: 1 / 4 }}
-        onChange={(e) =>
-          setFormState({
-            ...formState,
-            password: e.target.value,
-          })
-        }
       />
-      <Button
-        color="secondary"
-        sx={{ color: "blanchedalmond" }}
-        onClick={(e) => {
-          login()
-        }}
-      >
+      <Styled.link href="/auth/signup" underline="none">
+        Doesn't have an account yet? Register now!
+      </Styled.link>
+      <Styled.button type="submit" color="secondary">
         Let's go
-      </Button>
-    </Box>
+      </Styled.button>
+    </Styled.form>
   )
 }
