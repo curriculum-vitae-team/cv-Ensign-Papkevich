@@ -6,7 +6,7 @@ const PasswordInputField = (
   props: TextFieldProps,
   ref: ForwardedRef<HTMLInputElement>
 ) => {
-  const [passwordShown, setPasswordShown] = useState(false)
+  const [passwordShown, setPasswordShown] = useState(true)
 
   const togglePasswordVisibility = useCallback(() => {
     setPasswordShown((prevState) => !prevState)

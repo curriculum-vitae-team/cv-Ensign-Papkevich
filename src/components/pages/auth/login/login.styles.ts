@@ -1,5 +1,6 @@
 import { styled } from "@mui/material"
 import { Button, TextField, Link } from "@mui/material"
+import { PasswordInputField } from "../password-input"
 
 export const form = styled("form")({
   width: "100%",
@@ -12,6 +13,11 @@ export const form = styled("form")({
 })
 
 export const textField = styled(TextField)({
+  margin: 2,
+  width: "25%",
+})
+
+export const passwordField = styled(PasswordInputField)({
   margin: 2,
   width: "25%",
 })

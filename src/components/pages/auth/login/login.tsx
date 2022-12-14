@@ -41,7 +41,7 @@ export const Login = () => {
         label="login"
         variant="outlined"
       />
-      <Styled.textField
+      <Styled.passwordField
         {...register("password")}
         id="outlined-basic"
         label="password"

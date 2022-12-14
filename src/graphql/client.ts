@@ -6,16 +6,16 @@ const httpLink = createHttpLink({
   uri: process.env.GRAPHQL_API_URL,
 })
 
-// const authLink = setContext((_, { headers }) => {
-//   return {
-//     headers: {
-//       ...headers,
-//       authorization: access_token() && `Bearer ${access_token()}`,
-//     },
-//   }
-// })
+const authLink = setContext((_, { headers }) => {
+  return {
+    headers: {
+      ...headers,
+      authorization: access_token() && `Bearer ${access_token()}`,
+    },
+  }
+})
 
 export const client = new ApolloClient({
-  uri: process.env.GRAPHQL_API_URL,
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 })
