@@ -34,7 +34,6 @@ export const Login = () => {
   return (
     <Styled.Form
       onSubmit={handleSubmit((data) => {
-        console.log("wow")
         doLogIn({
           variables: {
             email: data.email,
