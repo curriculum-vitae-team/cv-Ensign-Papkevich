@@ -1,3 +1,7 @@
+import SideBar from "../UI/sideMenu/sideMenu"
+
 export const Example = () => {
-  return <div>Logged in</div>
+  return <>
+  <SideBar/>
+  <div>Logged in</div></>
 }
