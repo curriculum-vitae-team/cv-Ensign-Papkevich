@@ -18,7 +18,7 @@ export const Login = () => {
   const [doLogIn] = useLazyQuery(LOGIN_QUERY, {
     onCompleted: ({ login }) => {
       access_token(login.access_token)
-      navigate("/example")
+      navigate("/employees")
     },
   })
   return (

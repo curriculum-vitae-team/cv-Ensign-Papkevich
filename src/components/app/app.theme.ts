@@ -28,7 +28,6 @@ export const theme = createTheme({
         "#root": {
           display: "flex",
           flexDirection: "column",
-          //TODO нужно вынести отюда этот height. На моей страница из-за него просадки есть.
           height: "100vh",
           paddingTop: 64,
         },
@@ -47,6 +46,22 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 0,
+        },
+      },
+    },
+
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#508AA8",
+          height: 64,
+        },
+      },
+    },
+    MuiAvatar: {
+      styleOverrides: {
+        root: {
+          textTransform: "uppercase",
         },
       },
     },
