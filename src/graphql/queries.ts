@@ -7,3 +7,22 @@ export const LOGIN_QUERY = gql`
     }
   }
 `
+
+export const USERS_QUERY = gql`
+  query Users {
+    users {
+      id
+      email
+      profile {
+        id
+        first_name
+        last_name
+        full_name
+        avatar
+      }
+      department_name
+      position_name
+      role
+    }
+  }
+`

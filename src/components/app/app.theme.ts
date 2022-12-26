@@ -49,5 +49,21 @@ export const theme = createTheme({
         },
       },
     },
+
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#508AA8",
+          height: 64,
+        },
+      },
+    },
+    MuiAvatar: {
+      styleOverrides: {
+        root: {
+          textTransform: "uppercase",
+        },
+      },
+    },
   },
 })
