@@ -9,8 +9,8 @@ import {
   Box,
 } from "@mui/material"
 import { Item, TableProps } from "./table.types"
-import { SortingOrder } from "../../../../constants/table_sort.constant"
-import { sortTableItems, searchItems } from "./helpers"
+import { SortingOrder } from "../../../constants/tableSort.constant"
+import { sortTableItems, searchItems } from "./helpers/helpers"
 import { TableSearchContext, TableSortContext } from "./table.context"
 
 const Table = <T extends Item>({

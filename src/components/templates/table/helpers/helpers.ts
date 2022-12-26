@@ -1,6 +1,6 @@
-import { SortingOrder } from "../../../../constants/table_sort.constant"
+import { SortingOrder } from "../../../../constants/tableSort.constant"
 import { Path, get } from "react-hook-form"
-import { Item } from "./table.types"
+import { Item } from "../table.types"
 
 export const sortTableItems =
   <T extends Item>(sortBy: Path<T>, order: SortingOrder) =>

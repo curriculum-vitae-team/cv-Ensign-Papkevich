@@ -1,7 +1,7 @@
 import { TableCell, TableRow } from "@mui/material"
 import { memo } from "react"
 import { IUser } from "../../../../interfaces/user.interface"
-import { createSortLabel } from "./sort_label"
+import { createSortLabel } from "../../../templates/table/components/sort-label"
 
 const TableHeadCells = () => {
   return (

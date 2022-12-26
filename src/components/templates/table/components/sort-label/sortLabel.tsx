@@ -1,9 +1,9 @@
 import { memo, useContext } from "react"
 import { TableSortLabel } from "@mui/material"
 import { Path } from "react-hook-form"
-import { changeOrder } from "./helpers"
-import { Item } from "./table.types"
-import { TableSortContext } from "./table.context"
+import { changeOrder } from "../../helpers/helpers"
+import { Item } from "../../table.types"
+import { TableSortContext } from "../../table.context"
 import { TableSortLabelProps } from "@mui/material"
 
 export type SortLabelProps<K> = TableSortLabelProps & {

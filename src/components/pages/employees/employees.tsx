@@ -1,10 +1,10 @@
 import { useQuery } from "@apollo/client"
 import { UsersQueryResult } from "../../../graphql/queries.types"
 import { USERS_QUERY } from "../../../graphql/queries"
-import TableHeadCells from "./users_table/table_head"
-import TableRowCells from "./users_table/table_row"
-import { TableSearch } from "./users_table/table_search"
-import { createTable } from "./users_table/users_table"
+import TableHeadCells from "./table/tableHead"
+import TableRowCells from "./table/tableRow"
+import { TableSearch } from "../../templates/table/components/table-search/tableSearch"
+import { createTable } from "../../templates/table"
 import { IUser } from "../../../interfaces/user.interface"
 
 const Table = createTable<IUser>()

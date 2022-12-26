@@ -1,5 +1,5 @@
 import { IUserProfile } from "./user_profile.interface"
-import { UserRole } from "../constants/user_role.constant"
+import { UserRole } from "../constants/userRole.constant"
 
 export interface IUser {
   id: string

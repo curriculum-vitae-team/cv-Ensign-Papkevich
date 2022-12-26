@@ -1,7 +1,7 @@
 import { TableRow, TableCell, Avatar, IconButton } from "@mui/material"
 import { MoreVert } from "@mui/icons-material"
 import { IUser } from "../../../../interfaces/user.interface"
-import { TableRowProps } from "./table.types"
+import { TableRowProps } from "../../../templates/table/table.types"
 import { memo } from "react"
 
 const TableRowCells = ({ item }: TableRowProps<IUser>) => {

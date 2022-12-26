@@ -1,6 +1,6 @@
 import { Container } from "@mui/material"
 import * as Styled from "./header.styles"
-import { UserMenuList } from "../user_menu"
+import { UserMenuList } from "../menu"
 
 export const Header = () => {
   return (
