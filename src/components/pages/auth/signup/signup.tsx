@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form"
 import { SignUpFormValues } from "./signup.types"
 import * as Styled from "./signup.styles"
 import { PasswordInputField } from "../password-input"
+import { securityService } from "../../../../security/securityService"
+import { regExpForEmail } from "../../../../constants/RegExp.constants"
 
 export const Signup = () => {
   const navigate = useNavigate()
@@ -21,10 +23,11 @@ export const Signup = () => {
 
   const [signup, { data, loading, error }] = useMutation(SIGNUP_MUTATION, {
     onCompleted: (data) => {
-      // use Reactive Value
       if (data) {
-        const prefix = "Bearer "
-        localStorage.setItem("token", prefix.concat(data.signup.access_token))
+        securityService.writeToStorage(
+          data.signup.user,
+          data.signup.access_token
+        )
         navigate("/auth/login")
       }
     },
@@ -100,8 +103,7 @@ export const Signup = () => {
         {...register("email", {
           required: "This is required",
           pattern: {
-            value:
-              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+            value: regExpForEmail,
             message: "Please enter a valid email",
           },
         })}

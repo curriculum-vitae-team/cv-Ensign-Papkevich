@@ -4,7 +4,7 @@ import { Login } from "../pages/auth/login/login"
 import { Example } from "../pages/example"
 import { Employees } from "../pages/employees"
 import { SecurityObserver } from "../../security/securityObserver"
-
+import { Layout } from "../../components/templates/layout"
 
 export const Router = () => {
   return (
@@ -14,10 +14,10 @@ export const Router = () => {
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/signup" element={<Signup />} />
         </Route>
-        <Route path="" element={<SecurityObserver />}>
-          <Route path="/" element={<Login />} />
-          <Route path="/example" element={<Example />} />
-          <Route path="/employees" element={<Employees />} />
+        <Route element={<Layout />}>
+          <Route path="/employees" element={<SecurityObserver />}>
+            <Route path="" element={<Employees />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

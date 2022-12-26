@@ -1,4 +1,4 @@
-import { IUserProfile } from "./user_profile.interface"
+import { IUserProfile } from "./profile.interface"
 import { UserRole } from "../constants/userRole.constant"
 
 export interface IUser {

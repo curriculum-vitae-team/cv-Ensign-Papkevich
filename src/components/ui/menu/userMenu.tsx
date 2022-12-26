@@ -7,16 +7,11 @@ import {
   Menu,
   Divider,
 } from "@mui/material"
+import { useReactiveVar } from "@apollo/client"
+import { securityService } from "../../../security/securityService"
 
 export const UserMenuList = () => {
-  // update this after merge with auth_service branch
-  const user = {
-    email: "example@example.com",
-    profile: {
-      full_name: "xxx",
-      avatar: "dddd",
-    },
-  }
+  const user = useReactiveVar(securityService.user$)
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null)
   const open = Boolean(anchorEl)
@@ -27,6 +22,10 @@ export const UserMenuList = () => {
 
   const handleClose = useCallback(() => {
     setAnchorEl(null)
+  }, [])
+
+  const handleLogout = useCallback(() => {
+    securityService.clearStorage()
   }, [])
   // TO_DO: Add navigation to pages onClick
 
@@ -76,7 +75,7 @@ export const UserMenuList = () => {
           <MenuItem>Profile</MenuItem>
           <MenuItem>Settings</MenuItem>
           <Divider />
-          <MenuItem>Logout</MenuItem>
+          <MenuItem onClick={handleLogout}>Logout</MenuItem>
         </Menu>
       </Paper>
     </>

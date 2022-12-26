@@ -23,7 +23,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.40.0",
-    "react-router-dom": "^6.4.4"
+    "react-router-dom": "^6.4.4",
+    "spinners-react": "^1.0.7"
   },
   "devDependencies": {
     "@types/jest": "^29.2.2",

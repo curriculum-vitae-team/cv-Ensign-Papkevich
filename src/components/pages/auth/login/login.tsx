@@ -22,10 +22,8 @@ export const Login = () => {
 
   const [execQuery] = useLazyQuery(LOGIN_QUERY, {
     onCompleted: ({ login }) => {
-
-      securityService.writeToStorage(login.access_token)
-      navigate("/example")
-
+      securityService.writeToStorage(login.user, login.access_token)
+      navigate("/employees")
     },
   })
 
@@ -37,7 +35,7 @@ export const Login = () => {
       },
     })
   }
-  
+
   return (
     <Styled.Form onSubmit={handleSubmit(onSubmit)}>
       <Typography variant="h2">Welcome back!</Typography>
