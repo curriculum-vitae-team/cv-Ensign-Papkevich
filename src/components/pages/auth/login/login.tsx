@@ -6,9 +6,8 @@ import * as Styled from "./login.styles"
 import { useForm } from "react-hook-form"
 import { securityService } from "../../../../security/securityService"
 import { AuthFormValues } from "../auth.types"
-import { useState } from "react"
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye"
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff"
+import { regExpForEmail } from "../../../../constants/RegExp.constants"
+import { PasswordInputField } from "../password-input"
 
 export const Login = () => {
   const navigate = useNavigate()
@@ -21,27 +20,24 @@ export const Login = () => {
     defaultValues: { email: "", password: "" },
   })
 
-  const [showPassword, setShowPassword] = useState(false)
-  const handleClickShowPassword = () => setShowPassword(!showPassword)
-  const handleMouseDownPassword = () => setShowPassword(!showPassword)
-
-  const [doLogIn] = useLazyQuery(LOGIN_QUERY, {
+  const [execQuery] = useLazyQuery(LOGIN_QUERY, {
     onCompleted: ({ login }) => {
       securityService.writeToStorage(login.access_token)
       navigate("/example")
     },
   })
+
+  const onSubmit = (data: AuthFormValues) => {
+    execQuery({
+      variables: {
+        email: data.email,
+        password: data.password,
+      },
+    })
+  }
+  
   return (
-    <Styled.Form
-      onSubmit={handleSubmit((data) => {
-        doLogIn({
-          variables: {
-            email: data.email,
-            password: data.password,
-          },
-        })
-      })}
-    >
+    <Styled.Form onSubmit={handleSubmit(onSubmit)}>
       <Typography variant="h2">Welcome back!</Typography>
       <Styled.TextFieldMod
         error={!!errors.email}
@@ -49,8 +45,7 @@ export const Login = () => {
         {...register("email", {
           required: "This field is required",
           pattern: {
-            value:
-              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+            value: regExpForEmail,
             message: "Please enter a valid email",
           },
         })}
@@ -58,34 +53,20 @@ export const Login = () => {
         label="login"
         variant="outlined"
       />
-      <Styled.PasswordField
+      <PasswordInputField
+        id="outlined-basic"
+        label="Password"
+        variant="outlined"
         error={!!errors.password}
         helperText={errors?.password?.message}
         {...register("password", {
-          required: "This field is required",
-          validate: (value: string) => {
-            if (value.length < 5) {
+          required: "This is required",
+          validate: (val: string) => {
+            if (val.length <= 5) {
               return "Password must be be at least 5 characters"
             }
           },
         })}
-        id="outlined-basic"
-        label="password"
-        variant="outlined"
-        type={showPassword ? "text" : "password"}
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-              >
-                {showPassword ? <VisibilityOffIcon /> : <RemoveRedEyeIcon />}
-              </IconButton>
-            </InputAdornment>
-          ),
-        }}
       />
       <Styled.LinkMod href="/auth/signup" underline="none">
         Doesn't have an account yet? Register now!

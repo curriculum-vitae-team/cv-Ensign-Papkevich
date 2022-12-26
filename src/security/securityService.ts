@@ -5,7 +5,7 @@ class SecurityService {
   access_token$ = makeVar("")
   private readonly storage: Storage
 
-  public constructor(storage: Storage) {
+  constructor(storage: Storage) {
     this.storage = storage
     this.readFromStorage()
   }
