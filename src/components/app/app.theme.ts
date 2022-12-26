@@ -28,7 +28,6 @@ export const theme = createTheme({
         "#root": {
           display: "flex",
           flexDirection: "column",
-          //TODO нужно вынести отюда этот height. На моей страница из-за него просадки есть.
           height: "100vh",
           paddingTop: 64,
         },
