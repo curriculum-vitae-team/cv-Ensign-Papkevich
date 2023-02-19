@@ -3,7 +3,6 @@ import {
   Table as MuiTable,
   TableHead,
   TableBody,
-  TableFooter,
   TableRow,
   TableCell,
   Box,
