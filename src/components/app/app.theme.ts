@@ -1,7 +1,7 @@
 import { createTheme } from "@mui/material"
 
 /**
- main int orange 211A1D
+ main  211A1D
  black 031927
  light blue 9DD1F1
  blue 508AA8
@@ -11,7 +11,7 @@ import { createTheme } from "@mui/material"
 export const theme = createTheme({
   palette: {
     primary: {
-      main: "#BA1200",
+      main: "#211A1D",
     },
     secondary: {
       main: "#508AA8",

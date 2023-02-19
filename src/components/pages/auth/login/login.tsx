@@ -1,5 +1,5 @@
 import { useLazyQuery } from "@apollo/client"
-import { IconButton, InputAdornment, Typography } from "@mui/material"
+import { IconButton, InputAdornment, Typography, TextField, Button } from "@mui/material"
 import { LOGIN_QUERY } from "../../../../graphql/queries"
 import { useNavigate } from "react-router-dom"
 import * as Styled from "./login.styles"
@@ -22,10 +22,8 @@ export const Login = () => {
 
   const [execQuery] = useLazyQuery(LOGIN_QUERY, {
     onCompleted: ({ login }) => {
-
-      securityService.writeToStorage(login.access_token)
-      navigate("/example")
-
+      securityService.writeToStorage(login.user, login.access_token)
+      navigate("/employees")
     },
   })
 
@@ -37,11 +35,11 @@ export const Login = () => {
       },
     })
   }
-  
+
   return (
     <Styled.Form onSubmit={handleSubmit(onSubmit)}>
-      <Typography variant="h2">Welcome back!</Typography>
-      <Styled.TextFieldMod
+      <Typography variant="h2" textAlign="center" sx={{ mb: 5 }}>Welcome back!</Typography>
+      <TextField
         error={!!errors.email}
         helperText={errors?.email?.message}
         {...register("email", {
@@ -52,7 +50,7 @@ export const Login = () => {
           },
         })}
         id="outlined-basic"
-        label="login"
+        label="Username"
         variant="outlined"
       />
       <PasswordInputField
@@ -70,12 +68,12 @@ export const Login = () => {
           },
         })}
       />
-      <Styled.LinkMod href="/auth/signup" underline="none">
-        Doesn't have an account yet? Register now!
+      <Styled.LinkMod href="/auth/signup" textAlign="center" underline="none">
+        Do not have an account? Sign up now!
       </Styled.LinkMod>
-      <Styled.ButtonMod type="submit" color="secondary">
+      <Button type="submit" color="secondary">
         Let's go
-      </Styled.ButtonMod>
+      </Button>
     </Styled.Form>
   )
 }

@@ -10,7 +10,6 @@ export const App = () => {
     <ThemeProvider theme={theme}>
       <ApolloProvider client={client}>
         <CssBaseline />
-        <Header />
         <Router />
       </ApolloProvider>
     </ThemeProvider>

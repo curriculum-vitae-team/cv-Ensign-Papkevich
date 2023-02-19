@@ -11,6 +11,8 @@ import { Link, Typography } from "@mui/material"
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt"
 import * as Styled from "./sideMenu.styles"
 import { StyleRounded } from "@mui/icons-material"
+import MoreVertIcon from "@mui/icons-material/MoreVert"
+import { IconButton } from "@mui/material"
 
 export default function SideBar() {
   const [isOpened, setIsOpened] = React.useState(false)
@@ -61,7 +63,9 @@ export default function SideBar() {
       >
         {list()}
       </Drawer>
-      <Button onClick={handleClickShowSideBar}>Btn</Button>
+      <IconButton onClick={handleClickShowSideBar}>
+        <MoreVertIcon />
+      </IconButton>
     </>
   )
 }
