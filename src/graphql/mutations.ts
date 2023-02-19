@@ -18,3 +18,10 @@ export const SIGNUP_MUTATION = gql`
     }
   }
 `
+export const DELETE_USER_MUTATION = gql`
+  mutation DeleteUser($id: ID!) {
+    deleteUser(id: $id) {
+      affected
+    }
+  }
+`
