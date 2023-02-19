@@ -1,4 +1,4 @@
-import { Box, Drawer, styled } from "@mui/material"
+import { Box, styled } from "@mui/material"
 
 export const SideBarHeader = styled(Box)({
   display: "flex",

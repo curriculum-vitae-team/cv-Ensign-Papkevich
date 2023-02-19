@@ -1,5 +1,5 @@
 import { useLazyQuery } from "@apollo/client"
-import { IconButton, InputAdornment, Typography, TextField, Button } from "@mui/material"
+import { Typography, TextField, Button } from "@mui/material"
 import { LOGIN_QUERY } from "../../../../graphql/queries"
 import { useNavigate } from "react-router-dom"
 import * as Styled from "./login.styles"
@@ -38,7 +38,9 @@ export const Login = () => {
 
   return (
     <Styled.Form onSubmit={handleSubmit(onSubmit)}>
-      <Typography variant="h2" textAlign="center" sx={{ mb: 5 }}>Welcome back!</Typography>
+      <Typography variant="h2" textAlign="center" sx={{ mb: 5 }}>
+        Welcome back!
+      </Typography>
       <TextField
         error={!!errors.email}
         helperText={errors?.email?.message}

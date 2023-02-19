@@ -1,5 +1,5 @@
 import { ChangeEvent, useCallback, useContext } from "react"
-import { Button, TextFieldProps, TextField } from "@mui/material"
+import { TextFieldProps, TextField } from "@mui/material"
 import { Search } from "@mui/icons-material"
 import { TableSearchContext } from "../../table.context"
 

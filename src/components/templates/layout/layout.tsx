@@ -3,7 +3,6 @@ import { Container, CircularProgress } from "@mui/material"
 import { Suspense, memo } from "react"
 import { Outlet } from "react-router-dom"
 
-
 const Layout = () => {
   return (
     <>

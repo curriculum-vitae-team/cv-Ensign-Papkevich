@@ -2,7 +2,7 @@ import { gql } from "@apollo/client"
 
 export const SIGNUP_MUTATION = gql`
   mutation SignUp($auth: AuthInput!) {
-    signup(auth: { auth: $auth }) {
+    signup(auth: $auth) {
       user {
         id
         email
