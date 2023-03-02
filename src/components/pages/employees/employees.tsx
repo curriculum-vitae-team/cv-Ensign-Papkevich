@@ -25,7 +25,7 @@ const Employees = () => {
         variant="outlined"
         color="secondary"
         disabled={!isAdmin}
-        sx={{ ml: 155, mt: 1, mb: 3 }}
+        sx={{ ml: 155, mt: 1 }}
       >
         ADD NEW EMPLOYEE
       </Button>

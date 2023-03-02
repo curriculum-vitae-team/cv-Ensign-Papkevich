@@ -22,6 +22,11 @@ const TableRowCells = ({ item }: TableRowProps<IUser>) => {
   const handleDeleteUser = async () => {
     await deleteUserMutation({
       variables: { id: item.id },
+      update(cache) {
+        const id = cache.identify({ id: item.id, __typename: "User" })
+        cache.evict({ id })
+        cache.gc()
+      },
     })
   }
 

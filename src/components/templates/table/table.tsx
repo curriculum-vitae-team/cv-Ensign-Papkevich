@@ -6,6 +6,7 @@ import {
   TableRow,
   TableCell,
   Box,
+  Button,
 } from "@mui/material"
 import { Item, TableProps } from "./table.types"
 import { SortingOrder } from "../../../constants/tableSort.constant"
@@ -20,6 +21,8 @@ const Table = <T extends Item>({
   TableRowCells,
   searchBy,
   defaultSortBy,
+  additionalBtnVisible,
+  additionalBtnName,
 }: TableProps<T>) => {
   const [search, setSearch] = useState("")
   const deferredSearch = useDeferredValue(search)
@@ -64,6 +67,8 @@ const Table = <T extends Item>({
                 <TableSearch />
               </Box>
             </TableCell>
+            <Button></Button> // TODO: Correct button
+            <TableCell></TableCell>
           </TableRow>
         </TableSearchContext.Provider>
         <TableSortContext.Provider value={tableSort as never}>
