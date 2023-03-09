@@ -1,6 +1,7 @@
 import { makeVar } from "@apollo/client"
 import { StorageKeys } from "../constants/StorageKeys.constants"
 import { IUser } from "../interfaces/user.interface"
+
 class SecurityService {
   access_token$ = makeVar("")
   user$ = makeVar<IUser | null>(null)

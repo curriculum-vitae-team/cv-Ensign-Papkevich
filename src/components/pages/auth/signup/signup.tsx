@@ -118,7 +118,7 @@ export const Signup = () => {
         {...register("password", {
           required: "This is required",
           validate: (val: string) => {
-            if (val.length <= 5) {
+            if (val.length < 5) {
               return "Password must be be at least 5 characters"
             }
           },

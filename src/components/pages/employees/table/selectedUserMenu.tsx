@@ -1,52 +1,30 @@
-import { MouseEvent, useState, useCallback } from "react"
-import {
-  Paper,
-  MenuItem,
-  Typography,
-  Avatar,
-  Menu,
-  Divider,
-} from "@mui/material"
-import { useReactiveVar } from "@apollo/client"
-import { securityService } from "../../../security/securityService"
+import { memo, MouseEvent, useState, useCallback } from "react"
+import { Paper, Menu, IconButton } from "@mui/material"
+import { MoreVert } from "@mui/icons-material"
+import { selectedUserMenuProps } from "./selectedUserMenu.types"
 
-export const UserMenuList = () => {
-  const user = useReactiveVar(securityService.user$)
-
+export const SelectedUserMenu = ({ children }: selectedUserMenuProps) => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null)
   const open = Boolean(anchorEl)
 
-  const handleClick = useCallback((event: MouseEvent<HTMLElement>) => {
+  const handleOpen = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
-  }, [])
+  }
 
   const handleClose = useCallback(() => {
     setAnchorEl(null)
   }, [])
 
-  const handleLogout = useCallback(() => {
-    securityService.clearStorage()
-  }, [])
-  // TO_DO: Add navigation to pages onClick
-
   return (
     <>
-      <Typography color="white" sx={{ mr: 2 }}>
-        {user?.profile.full_name || user?.email}
-      </Typography>
-      <Avatar
-        src={user?.profile.avatar}
-        sx={{ backgroundColor: "#C8E0F4", cursor: "pointer" }}
-        onClick={handleClick}
-      >
-        {user?.profile.full_name?.[0] || user?.email[0]}
-      </Avatar>
+      <IconButton onClick={handleOpen}>
+        <MoreVert />
+      </IconButton>
       <Paper>
         <Menu
           anchorEl={anchorEl}
-          id="account-menu"
+          id="user-menu"
           open={open}
-          onClose={handleClose}
           onClick={handleClose}
           PaperProps={{
             elevation: 0,
@@ -72,12 +50,11 @@ export const UserMenuList = () => {
           transformOrigin={{ horizontal: "right", vertical: "top" }}
           anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         >
-          <MenuItem>Profile</MenuItem>
-          <MenuItem>Settings</MenuItem>
-          <Divider />
-          <MenuItem onClick={handleLogout}>Logout</MenuItem>
+          {children}
         </Menu>
       </Paper>
     </>
   )
 }
+
+export default memo(SelectedUserMenu)
