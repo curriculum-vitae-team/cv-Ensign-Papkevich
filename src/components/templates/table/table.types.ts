@@ -21,6 +21,5 @@ export type TableProps<T> = {
   TableRowCells: FC<TableRowProps<T>>
   searchBy: Path<T>[]
   defaultSortBy: Path<T>
-  additionalBtnVisible: boolean
-  additionalBtnName: FC<IAdditionalButtonProps>
+  additionalBtnName: string
 }

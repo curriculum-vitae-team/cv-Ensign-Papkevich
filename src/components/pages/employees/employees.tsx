@@ -21,15 +21,6 @@ const Employees = () => {
 
   return (
     <>
-      <Button
-        variant="outlined"
-        color="secondary"
-        disabled={!isAdmin}
-        sx={{ ml: 155, mt: 1 }}
-      >
-        ADD NEW EMPLOYEE
-      </Button>
-
       <div>
         <Table
           items={data?.users || []}
@@ -39,6 +30,7 @@ const Employees = () => {
           TableRowCells={TableRowCells}
           searchBy={["email", "profile.first_name", "profile.last_name"]}
           defaultSortBy="department_name"
+          additionalBtnName="ADD NEW EMPLOYEE"
         />
       </div>
     </>
