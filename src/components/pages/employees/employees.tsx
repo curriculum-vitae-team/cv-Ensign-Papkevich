@@ -6,8 +6,6 @@ import TableRowCells from "./table/tableRow"
 import { TableSearch } from "../../templates/table/components/table-search/tableSearch"
 import { createTable } from "../../templates/table"
 import { IUser } from "../../../interfaces/user.interface"
-import { userIsAdmin } from "../../../hooks/adminRoleHook"
-import { Button } from "@mui/material"
 
 const Table = createTable<IUser>()
 
@@ -15,9 +13,9 @@ const Employees = () => {
   const { data, loading } = useQuery<UsersQueryResult>(USERS_QUERY)
   console.log(data)
 
-  const isAdmin = userIsAdmin()
-
-  // const handleCreateUser = () => {}
+  const handleCreateUser = () => {
+    console.log("Clicked create user")
+  }
 
   return (
     <>
@@ -31,6 +29,7 @@ const Employees = () => {
           searchBy={["email", "profile.first_name", "profile.last_name"]}
           defaultSortBy="department_name"
           additionalBtnName="ADD NEW EMPLOYEE"
+          additionalBtnAction={handleCreateUser}
         />
       </div>
     </>

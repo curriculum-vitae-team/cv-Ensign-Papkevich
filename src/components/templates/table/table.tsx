@@ -23,6 +23,7 @@ const Table = <T extends Item>({
   searchBy,
   defaultSortBy,
   additionalBtnName,
+  additionalBtnAction,
 }: TableProps<T>) => {
   const [search, setSearch] = useState("")
   const deferredSearch = useDeferredValue(search)
@@ -78,7 +79,12 @@ const Table = <T extends Item>({
                 borderBottom: "none",
               }}
             >
-              <Button variant="outlined" color="secondary" disabled={!isAdmin}>
+              <Button
+                variant="outlined"
+                color="secondary"
+                disabled={!isAdmin}
+                onClick={additionalBtnAction}
+              >
                 {additionalBtnName}
               </Button>
             </TableCell>

@@ -22,4 +22,5 @@ export type TableProps<T> = {
   searchBy: Path<T>[]
   defaultSortBy: Path<T>
   additionalBtnName: string
+  additionalBtnAction: () => void
 }
