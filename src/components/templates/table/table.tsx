@@ -72,6 +72,7 @@ const Table = <T extends Item>({
             </TableCell>
 
             <TableCell
+              colSpan={5}
               sx={{
                 top: 64,
                 height: 80,
@@ -82,7 +83,7 @@ const Table = <T extends Item>({
               <Button
                 variant="outlined"
                 color="secondary"
-                disabled={!isAdmin}
+                // disabled={!isAdmin}
                 onClick={additionalBtnAction}
               >
                 {additionalBtnName}
@@ -90,10 +91,12 @@ const Table = <T extends Item>({
             </TableCell>
           </TableRow>
         </TableSearchContext.Provider>
+
         <TableSortContext.Provider value={tableSort as never}>
           <TableHeadCells />
         </TableSortContext.Provider>
       </TableHead>
+
       <TableBody>
         {loading && (
           <TableRow>
