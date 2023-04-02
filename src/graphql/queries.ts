@@ -35,3 +35,22 @@ export const USERS_QUERY = gql`
     }
   }
 `
+
+export const DEPARTMENTS_QUERY = gql`
+  query Departments {
+    departments {
+      id
+      created_at
+      name
+    }
+  }
+`
+export const POSITIONS_QUERY = gql`
+  query Positions {
+    positions {
+      id
+      created_at
+      name
+    }
+  }
+`

@@ -12,6 +12,18 @@ export const Form = styled("form")({
     width: "100%",
   },
 
+  "& .MuiTextField-root": {
+    fontSize: "12px",
+    "& .MuiFormLabel-root": {
+      fontSize: "12px",
+    },
+    "& .MuiInputBase-input": {
+      fontSize: "12px",
+      height: "32px",
+      padding: "12px 12px",
+    },
+  },
+
   "@media (max-width: 960px)": {
     gridTemplateColumns: "1fr",
     "& > button": {

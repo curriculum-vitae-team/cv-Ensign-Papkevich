@@ -45,7 +45,7 @@ const Employees = () => {
         onClose={handleClose}
         modalTitle="Create new employee account"
       >
-        <CreateUserForm />
+        <CreateUserForm handleClose={handleClose} />
       </BasicModal>
     </>
   )

@@ -83,7 +83,7 @@ const Table = <T extends Item>({
               <Button
                 variant="outlined"
                 color="secondary"
-                // disabled={!isAdmin}
+                disabled={!isAdmin}
                 onClick={additionalBtnAction}
               >
                 {additionalBtnName}
