@@ -8,6 +8,7 @@ import { TableSearch } from "../../templates/table/components/table-search/table
 import { createTable } from "../../templates/table"
 import { IUser } from "../../../interfaces/user.interface"
 import { BasicModal } from "../../templates/modal/modal"
+import { CreateUserForm } from "./modalComponent/createUserForm"
 
 const Table = createTable<IUser>()
 
@@ -43,8 +44,9 @@ const Employees = () => {
         open={open}
         onClose={handleClose}
         modalTitle="Create new employee account"
-        modalComponent={null}
-      />
+      >
+        <CreateUserForm />
+      </BasicModal>
     </>
   )
 }
