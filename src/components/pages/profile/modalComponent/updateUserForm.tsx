@@ -60,7 +60,7 @@ export const UpdateUserForm = ({ user, handleClose }) => {
             label="Position"
             registerName="position"
             register={register}
-            defaultValue={""}
+            defaultValue={setDefaultValues(user).position}
             data={positionsData!.positions}
           />
 
@@ -68,7 +68,7 @@ export const UpdateUserForm = ({ user, handleClose }) => {
             label="Department"
             registerName="department"
             register={register}
-            defaultValue={""}
+            defaultValue={setDefaultValues(user).department}
             data={departmentsData!.departments}
           />
 
