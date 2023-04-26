@@ -91,7 +91,7 @@ export const Profile = () => {
           <BasicModal
             open={open}
             onClose={handleModalClose}
-            modalTitle="Update employee's profile information"
+            modalTitle="Update profile"
           >
             <UpdateUserForm handleClose={handleModalClose} user={user} />
           </BasicModal>
