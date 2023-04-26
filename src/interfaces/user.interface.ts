@@ -1,5 +1,7 @@
 import { IUserProfile } from "./profile.interface"
 import { UserRole } from "../constants/userRole.constant"
+import { IDepartment } from "./department.interface"
+import { IPosition } from "./position.interface"
 
 export interface IUser {
   id: string
@@ -7,7 +9,7 @@ export interface IUser {
   email: string
   is_verified: boolean
   profile: IUserProfile
-  department_name: string
-  position_name: string
+  department: IDepartment
+  position: IPosition
   role: UserRole
 }
