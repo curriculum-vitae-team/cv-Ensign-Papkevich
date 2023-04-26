@@ -5,10 +5,10 @@ import { Form } from "./createUserForm.styles"
 import { SelectInputField } from "./selectInputField"
 import { useCreateUserFormData } from "../../../../hooks/createUserFormDataHook"
 import { Spinner } from "../../../ui/spinner"
-import { CREATE_USER_MUTATION } from "../../../../graphql/mutations"
-import { USERS_QUERY } from "../../../../graphql/queries"
+import { CREATE_USER_MUTATION } from "../../../../graphql/mutations/createUser"
+import { USERS_QUERY } from "../../../../graphql/queries/users"
 import { useMutation } from "@apollo/client"
-import { CreateUserResult } from "../../../../graphql/mutations.types"
+import { CreateUserResult } from "../../../../graphql/mutations/mutations.types"
 
 export const CreateUserForm = ({ handleClose }) => {
   const {

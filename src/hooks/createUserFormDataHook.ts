@@ -3,8 +3,9 @@ import { UserRole } from "../constants/userRole.constant"
 import {
   DepartmentQueryReturn,
   PositionQueryReturn,
-} from "../graphql/queries.types"
-import { DEPARTMENTS_QUERY, POSITIONS_QUERY } from "../graphql/queries"
+} from "../graphql/queries/queries.types"
+import { DEPARTMENTS_QUERY } from "../graphql/queries/departments"
+import { POSITIONS_QUERY } from "../graphql/queries/positions"
 
 export const useCreateUserFormData = () => {
   const {

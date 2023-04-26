@@ -6,7 +6,7 @@ import { userIsAdmin } from "../../../../hooks/adminRoleHook"
 import { memo } from "react"
 import { SelectedUserMenu } from "./selectedUserMenu"
 import { useMutation } from "@apollo/client"
-import { DELETE_USER_MUTATION } from "../../../../graphql/mutations"
+import { DELETE_USER_MUTATION } from "../../../../graphql/mutations/deleteUser"
 
 const TableRowCells = ({ item }: TableRowProps<IUser>) => {
   const navigate = useNavigate()

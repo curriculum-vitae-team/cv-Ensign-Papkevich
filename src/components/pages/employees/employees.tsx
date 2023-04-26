@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useQuery } from "@apollo/client"
-import { UsersQueryResult } from "../../../graphql/queries.types"
-import { USERS_QUERY } from "../../../graphql/queries"
+import { UsersQueryResult } from "../../../graphql/queries/queries.types"
+import { USERS_QUERY } from "../../../graphql/queries/users"
 import TableHeadCells from "./table/tableHead"
 import TableRowCells from "./table/tableRow"
 import { TableSearch } from "../../templates/table/components/table-search/tableSearch"
@@ -19,7 +19,6 @@ const Employees = () => {
 
   const handleCreateUser = () => {
     setOpen(true)
-    console.log("Clicked create user")
   }
 
   const handleClose = () => {

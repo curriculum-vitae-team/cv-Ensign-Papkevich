@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client"
 import { Typography, TextField, Button } from "@mui/material"
-import { SIGNUP_MUTATION } from "../../../../graphql/mutations"
+import { SIGNUP_MUTATION } from "../../../../graphql/mutations/signup"
 import { useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { SignUpFormValues } from "./signup.types"
