@@ -1,6 +1,6 @@
 import { useLazyQuery } from "@apollo/client"
 import { Typography, TextField, Button } from "@mui/material"
-import { LOGIN_QUERY } from "../../../../graphql/queries"
+import { LOGIN_QUERY } from "../../../../graphql/queries/login"
 import { useNavigate } from "react-router-dom"
 import * as Styled from "./login.styles"
 import { useForm } from "react-hook-form"

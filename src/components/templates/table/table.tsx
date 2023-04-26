@@ -12,6 +12,7 @@ import { Item, TableProps } from "./table.types"
 import { SortingOrder } from "../../../constants/tableSort.constant"
 import { sortTableItems, searchItems } from "./helpers/helpers"
 import { TableSearchContext, TableSortContext } from "./table.context"
+import { userIsAdmin } from "../../../hooks/adminRoleHook"
 
 const Table = <T extends Item>({
   items,
@@ -21,8 +22,8 @@ const Table = <T extends Item>({
   TableRowCells,
   searchBy,
   defaultSortBy,
-  additionalBtnVisible,
   additionalBtnName,
+  additionalBtnAction,
 }: TableProps<T>) => {
   const [search, setSearch] = useState("")
   const deferredSearch = useDeferredValue(search)
@@ -49,13 +50,15 @@ const Table = <T extends Item>({
     return filteredItems.sort(sortTableItems<T>(deferredSortBy, deferredOrder))
   }, [filteredItems, deferredSortBy, deferredOrder])
 
+  const isAdmin = userIsAdmin()
+
   return (
     <MuiTable stickyHeader>
       <TableHead>
         <TableSearchContext.Provider value={tableSearch as never}>
           <TableRow>
             <TableCell
-              colSpan={10}
+              colSpan={5}
               sx={{
                 top: 64,
                 height: 80,
@@ -67,14 +70,33 @@ const Table = <T extends Item>({
                 <TableSearch />
               </Box>
             </TableCell>
-            <Button></Button> // TODO: Correct button
-            <TableCell></TableCell>
+
+            <TableCell
+              colSpan={5}
+              sx={{
+                top: 64,
+                height: 80,
+                backgroundColor: "#FFFFF",
+                borderBottom: "none",
+              }}
+            >
+              <Button
+                variant="outlined"
+                color="secondary"
+                disabled={!isAdmin}
+                onClick={additionalBtnAction}
+              >
+                {additionalBtnName}
+              </Button>
+            </TableCell>
           </TableRow>
         </TableSearchContext.Provider>
+
         <TableSortContext.Provider value={tableSort as never}>
           <TableHeadCells />
         </TableSortContext.Provider>
       </TableHead>
+
       <TableBody>
         {loading && (
           <TableRow>

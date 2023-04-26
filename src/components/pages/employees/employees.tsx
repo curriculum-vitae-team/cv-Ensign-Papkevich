@@ -1,46 +1,51 @@
+import { useState } from "react"
 import { useQuery } from "@apollo/client"
-import { UsersQueryResult } from "../../../graphql/queries.types"
-import { USERS_QUERY } from "../../../graphql/queries"
+import { UsersQueryResult } from "../../../graphql/queries/queries.types"
+import { USERS_QUERY } from "../../../graphql/queries/users"
 import TableHeadCells from "./table/tableHead"
 import TableRowCells from "./table/tableRow"
 import { TableSearch } from "../../templates/table/components/table-search/tableSearch"
 import { createTable } from "../../templates/table"
 import { IUser } from "../../../interfaces/user.interface"
-import { userIsAdmin } from "../../../hooks/adminRoleHook"
-import { Button } from "@mui/material"
+import { BasicModal } from "../../templates/modal/modal"
+import { CreateUserForm } from "./modalComponent/createUserForm"
 
 const Table = createTable<IUser>()
 
 const Employees = () => {
   const { data, loading } = useQuery<UsersQueryResult>(USERS_QUERY)
-  console.log(data)
 
-  const isAdmin = userIsAdmin()
+  const [open, setOpen] = useState(false)
 
-  // const handleCreateUser = () => {}
+  const handleCreateUser = () => {
+    setOpen(true)
+  }
+
+  const handleClose = () => {
+    setOpen(false)
+    console.log("Hide modal")
+  }
 
   return (
     <>
-      <Button
-        variant="outlined"
-        color="secondary"
-        disabled={!isAdmin}
-        sx={{ ml: 155, mt: 1 }}
+      <Table
+        items={data?.users || []}
+        loading={loading}
+        TableSearch={TableSearch}
+        TableHeadCells={TableHeadCells}
+        TableRowCells={TableRowCells}
+        searchBy={["email", "profile.first_name", "profile.last_name"]}
+        defaultSortBy="department_name"
+        additionalBtnName="ADD NEW EMPLOYEE"
+        additionalBtnAction={handleCreateUser}
+      />
+      <BasicModal
+        open={open}
+        onClose={handleClose}
+        modalTitle="Create new employee account"
       >
-        ADD NEW EMPLOYEE
-      </Button>
-
-      <div>
-        <Table
-          items={data?.users || []}
-          loading={loading}
-          TableSearch={TableSearch}
-          TableHeadCells={TableHeadCells}
-          TableRowCells={TableRowCells}
-          searchBy={["email", "profile.first_name", "profile.last_name"]}
-          defaultSortBy="department_name"
-        />
-      </div>
+        <CreateUserForm handleClose={handleClose} />
+      </BasicModal>
     </>
   )
 }
