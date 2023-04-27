@@ -4,7 +4,7 @@ import { Login } from "../pages/auth/login/login"
 import { Employees } from "../pages/employees"
 import { SecurityObserver } from "../../security/securityObserver"
 import { Layout } from "../../components/templates/layout"
-import { Profile } from "../pages/profile/profile"
+import { Profile } from "../pages/profile"
 
 export const Router = () => {
   return (

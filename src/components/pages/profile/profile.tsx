@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, memo } from "react"
 import { useQuery } from "@apollo/client"
 import { useNavigate, useParams } from "react-router-dom"
 import { USER_QUERY } from "../../../graphql/queries/user"
@@ -11,8 +11,9 @@ import { userIsAdmin } from "../../../hooks/adminRoleHook"
 import { useUser } from "../../../hooks/useUserHook"
 import { BasicModal } from "../../templates/modal/modal"
 import { UpdateUserForm } from "./modalComponent/updateUserForm"
+import { useUpdateUserFormData } from "../../../hooks/updateUserFormDataHook"
 
-export const Profile = () => {
+const Profile = () => {
   const navigate = useNavigate()
   const { id } = useParams()
   const isAdmin = userIsAdmin()
@@ -23,6 +24,9 @@ export const Profile = () => {
     variables: { id },
     onError: () => navigate("/employees", { replace: true }),
   })
+
+  const { departmentsData, positionsData, loadingData } =
+    useUpdateUserFormData()
 
   const [open, setOpen] = useState(false)
 
@@ -93,10 +97,18 @@ export const Profile = () => {
             onClose={handleModalClose}
             modalTitle="Update profile"
           >
-            <UpdateUserForm handleClose={handleModalClose} user={user} />
+            <UpdateUserForm
+              handleClose={handleModalClose}
+              user={user}
+              positionsData={positionsData}
+              departmentsData={departmentsData}
+              id={id}
+            />
           </BasicModal>
         </>
       )}
     </>
   )
 }
+
+export default memo(Profile)

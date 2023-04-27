@@ -5,9 +5,21 @@ import { Button, TextField } from "@mui/material"
 import { Form } from "./updateUserForm.styles"
 import { useForm } from "react-hook-form"
 import { SelectInputField } from "../../../templates/select-input-field/selectInputField"
-import { useUpdateUserFormData } from "../../../../hooks/updateUserFormDataHook"
+import {
+  UpdateUserInput,
+  UpdateUserResult,
+} from "../../../../graphql/mutations/mutations.types"
+import { UPDATE_USER_MUTATION } from "../../../../graphql/mutations/updateUser"
+import { UpdateUserFormValues } from "./updateUserForm.types"
+import { USER_QUERY } from "../../../../graphql/queries/user"
 
-export const UpdateUserForm = ({ user, handleClose }) => {
+export const UpdateUserForm = ({
+  user,
+  handleClose,
+  positionsData,
+  departmentsData,
+  id,
+}) => {
   const setDefaultValues = (user: IUser | undefined) => ({
     first_name: user?.profile.first_name || "",
     last_name: user?.profile.last_name || "",
@@ -15,19 +27,75 @@ export const UpdateUserForm = ({ user, handleClose }) => {
     position: user?.position?.name || "",
   })
 
+  const [updateUser, { loading }] = useMutation<
+    UpdateUserResult,
+    UpdateUserInput
+  >(UPDATE_USER_MUTATION, {
+    refetchQueries: [
+      {
+        query: USER_QUERY,
+        variables: { id },
+      },
+    ],
+  })
+
+  let defaults = setDefaultValues(user)
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     defaultValues: setDefaultValues(user),
   })
 
-  const { loading, departmentsData, positionsData } = useUpdateUserFormData()
+  const onSubmit = async (inputs: UpdateUserFormValues) => {
+    try {
+      const { data } = await updateUser({
+        variables: {
+          id: user.id,
+          user: {
+            profile: {
+              first_name: inputs.first_name,
+              last_name: inputs.last_name,
+            },
+            departmentId: inputs.department,
+            positionId: inputs.position,
+          },
+        },
+        update(cache) {
+          const id = cache.identify({ id: user.id, __typename: "User" })
+          cache.modify({
+            id,
+            fields: {
+              profile: () => ({
+                first_name: inputs.first_name,
+                last_name: inputs.last_name,
+              }),
+              department: () => ({
+                id: inputs.department,
+                __typename: "Department",
+              }),
+              position: () => ({
+                id: inputs.position,
+                __typename: "Position",
+              }),
+            },
+          })
+        },
+      })
 
-  const onSubmit = () => {
-    console.log("Submit form")
+      if (data) {
+        reset(setDefaultValues(data.updatedUser))
+        defaults = setDefaultValues(data.updatedUser)
+      }
+      handleClose()
+    } catch (error) {
+      console.error(error)
+    }
   }
+
   return (
     <>
       {loading ? (
@@ -60,7 +128,7 @@ export const UpdateUserForm = ({ user, handleClose }) => {
             label="Position"
             registerName="position"
             register={register}
-            defaultValue={setDefaultValues(user).position}
+            defaultValue={defaults.position}
             data={positionsData!.positions}
           />
 
@@ -68,7 +136,7 @@ export const UpdateUserForm = ({ user, handleClose }) => {
             label="Department"
             registerName="department"
             register={register}
-            defaultValue={setDefaultValues(user).department}
+            defaultValue={defaults.department}
             data={departmentsData!.departments}
           />
 

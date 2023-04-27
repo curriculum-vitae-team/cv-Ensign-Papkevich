@@ -21,7 +21,7 @@ export const useUpdateUserFormData = () => {
   } = useQuery<PositionQueryReturn>(POSITIONS_QUERY)
 
   return {
-    loading: departmentsLoading || positionsLoading,
+    loadingData: departmentsLoading || positionsLoading,
     error: departmentsError || positionsError,
     departmentsData,
     positionsData,
