@@ -39,8 +39,6 @@ export const UpdateUserForm = ({
     ],
   })
 
-  let defaults = setDefaultValues(user)
-
   const {
     register,
     handleSubmit,
@@ -63,26 +61,6 @@ export const UpdateUserForm = ({
             departmentId: inputs.department,
             positionId: inputs.position,
           },
-        },
-        update(cache) {
-          const id = cache.identify({ id: user.id, __typename: "User" })
-          cache.modify({
-            id,
-            fields: {
-              profile: () => ({
-                first_name: inputs.first_name,
-                last_name: inputs.last_name,
-              }),
-              department: () => ({
-                id: inputs.department,
-                __typename: "Department",
-              }),
-              position: () => ({
-                id: inputs.position,
-                __typename: "Position",
-              }),
-            },
-          })
         },
       })
 
