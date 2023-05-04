@@ -88,7 +88,6 @@ export const UpdateUserForm = ({
 
       if (data) {
         reset(setDefaultValues(data.updatedUser))
-        defaults = setDefaultValues(data.updatedUser)
       }
       handleClose()
     } catch (error) {
@@ -128,7 +127,6 @@ export const UpdateUserForm = ({
             label="Position"
             registerName="position"
             register={register}
-            defaultValue={defaults.position}
             data={positionsData!.positions}
           />
 
@@ -136,7 +134,6 @@ export const UpdateUserForm = ({
             label="Department"
             registerName="department"
             register={register}
-            defaultValue={defaults.department}
             data={departmentsData!.departments}
           />
 
