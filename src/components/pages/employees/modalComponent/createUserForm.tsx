@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form"
+import { useMutation } from "@apollo/client"
 import { Button, TextField } from "@mui/material"
 import { regExpForEmail } from "../../../../constants/RegExp.constants"
 import { Form } from "./createUserForm.styles"
@@ -7,7 +8,6 @@ import { useCreateUserFormData } from "../../../../hooks/createUserFormDataHook"
 import { Spinner } from "../../../ui/spinner"
 import { CREATE_USER_MUTATION } from "../../../../graphql/mutations/createUser"
 import { USERS_QUERY } from "../../../../graphql/queries/users"
-import { useMutation } from "@apollo/client"
 import { CreateUserResult } from "../../../../graphql/mutations/mutations.types"
 
 export const CreateUserForm = ({ handleClose }) => {

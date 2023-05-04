@@ -1,13 +1,13 @@
 import { useMutation } from "@apollo/client"
-import { Typography, TextField, Button } from "@mui/material"
-import { SIGNUP_MUTATION } from "../../../../graphql/mutations/signup"
 import { useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
+import { Typography, TextField, Button } from "@mui/material"
 import { SignUpFormValues } from "./signup.types"
 import * as Styled from "./signup.styles"
 import { PasswordInputField } from "../password-input"
 import { securityService } from "../../../../security/securityService"
 import { regExpForEmail } from "../../../../constants/RegExp.constants"
+import { SIGNUP_MUTATION } from "../../../../graphql/mutations/signup"
 
 export const Signup = () => {
   const navigate = useNavigate()

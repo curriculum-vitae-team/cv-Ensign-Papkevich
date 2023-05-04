@@ -1,5 +1,4 @@
 import { useQuery } from "@apollo/client"
-import { UserRole } from "../constants/userRole.constant"
 import {
   DepartmentQueryReturn,
   PositionQueryReturn,

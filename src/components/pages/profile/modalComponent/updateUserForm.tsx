@@ -1,9 +1,9 @@
-import { IUser } from "../../../../interfaces/user.interface"
-import { Spinner } from "../../../ui/spinner"
+import { useForm } from "react-hook-form"
 import { useMutation } from "@apollo/client"
 import { Button, TextField } from "@mui/material"
+import { IUser } from "../../../../interfaces/user.interface"
+import { Spinner } from "../../../ui/spinner"
 import { Form } from "./updateUserForm.styles"
-import { useForm } from "react-hook-form"
 import { SelectInputField } from "../../../templates/select-input-field/selectInputField"
 import {
   UpdateUserInput,
