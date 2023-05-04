@@ -2,7 +2,6 @@
   "compilerOptions": {
     "outDir": "./dist/",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "baseUrl": "src",
     "noImplicitAny": false,
     "target": "ES6",
     "allowJs": true,
@@ -15,7 +14,17 @@
     "module": "esnext",
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "baseUrl": "./",
+    "paths": {
+      "@interfaces/*": ["src/interfaces/*"],
+      "@graphql/*": ["src/graphql/*"],
+      "@templates/*": ["src/components/templates/*"],
+      "@pages/*": ["src/components/pages/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@constants/*": ["src/constants/*"],
+      "@security/*": ["src/security/*"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", "public"]
