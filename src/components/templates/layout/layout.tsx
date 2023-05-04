@@ -1,7 +1,7 @@
-import { Header } from "../../ui/header"
-import { Container, CircularProgress } from "@mui/material"
 import { Suspense, memo } from "react"
+import { Container, CircularProgress } from "@mui/material"
 import { Outlet } from "react-router-dom"
+import { Header } from "../../ui/header"
 
 const Layout = () => {
   return (

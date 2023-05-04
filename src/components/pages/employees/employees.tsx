@@ -23,7 +23,6 @@ const Employees = () => {
 
   const handleClose = () => {
     setOpen(false)
-    console.log("Hide modal")
   }
 
   return (
@@ -35,7 +34,7 @@ const Employees = () => {
         TableHeadCells={TableHeadCells}
         TableRowCells={TableRowCells}
         searchBy={["email", "profile.first_name", "profile.last_name"]}
-        defaultSortBy="department_name"
+        defaultSortBy="department.name"
         additionalBtnName="ADD NEW EMPLOYEE"
         additionalBtnAction={handleCreateUser}
       />

@@ -33,15 +33,15 @@ const TableRowCells = ({ item }: TableRowProps<IUser>) => {
   return (
     <TableRow>
       <TableCell>
-        <Avatar src={item.profile.avatar}>
-          {item.profile.full_name?.[0] || item.email[0]}
+        <Avatar src={item.profile?.avatar}>
+          {item.profile?.full_name?.[0] || item.email[0]}
         </Avatar>
       </TableCell>
-      <TableCell>{item.profile.first_name}</TableCell>
-      <TableCell>{item.profile.last_name}</TableCell>
+      <TableCell>{item.profile?.first_name}</TableCell>
+      <TableCell>{item.profile?.last_name}</TableCell>
       <TableCell>{item.email}</TableCell>
-      <TableCell>{item.department_name}</TableCell>
-      <TableCell>{item.position_name}</TableCell>
+      <TableCell>{item.department?.name}</TableCell>
+      <TableCell>{item.position?.name}</TableCell>
       <TableCell>
         <SelectedUserMenu>
           <MenuItem onClick={navigateToUserProfile}>Profile</MenuItem>
