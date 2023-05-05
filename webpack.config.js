@@ -2,6 +2,7 @@ const path = require("path")
 const dotenv = require("dotenv-webpack")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const ESLintPlugin = require("eslint-webpack-plugin")
+const { TsconfigPathsPlugin } = require("tsconfig-paths-webpack-plugin")
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -37,5 +38,6 @@ module.exports = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
+    plugins: [new TsconfigPathsPlugin()],
   },
 }

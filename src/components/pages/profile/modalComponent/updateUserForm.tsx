@@ -1,17 +1,17 @@
 import { useForm } from "react-hook-form"
 import { useMutation } from "@apollo/client"
 import { Button, TextField } from "@mui/material"
-import { IUser } from "../../../../interfaces/user.interface"
-import { Spinner } from "../../../ui/spinner"
+import { IUser } from "@interfaces/user.interface"
+import { Spinner } from "@ui/spinner"
 import { Form } from "./updateUserForm.styles"
-import { SelectInputField } from "../../../templates/select-input-field/selectInputField"
+import { SelectInputField } from "@templates/select-input-field/selectInputField"
 import {
   UpdateUserInput,
   UpdateUserResult,
-} from "../../../../graphql/mutations/mutations.types"
-import { UPDATE_USER_MUTATION } from "../../../../graphql/mutations/updateUser"
+} from "@graphql/mutations/mutations.types"
+import { UPDATE_USER_MUTATION } from "@graphql/mutations/updateUser"
 import { UpdateUserFormValues } from "./updateUserForm.types"
-import { USER_QUERY } from "../../../../graphql/queries/user"
+import { USER_QUERY } from "@graphql/queries/user"
 
 export const UpdateUserForm = ({
   user,

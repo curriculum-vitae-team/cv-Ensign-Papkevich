@@ -2,9 +2,9 @@ import { useQuery } from "@apollo/client"
 import {
   DepartmentQueryReturn,
   PositionQueryReturn,
-} from "../graphql/queries/queries.types"
-import { DEPARTMENTS_QUERY } from "../graphql/queries/departments"
-import { POSITIONS_QUERY } from "../graphql/queries/positions"
+} from "@graphql/queries/queries.types"
+import { DEPARTMENTS_QUERY } from "@graphql/queries/departments"
+import { POSITIONS_QUERY } from "@graphql/queries/positions"
 
 export const useUpdateUserFormData = () => {
   const {
