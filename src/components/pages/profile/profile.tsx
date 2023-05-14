@@ -8,10 +8,11 @@ import { Spinner } from "@ui/spinner"
 import * as Styled from "./profile.styles"
 import { convertDate } from "./helpers"
 import { BasicModal } from "@templates/modal/modal"
-import { UpdateUserForm } from "./modalComponent/updateUserForm"
+import { UpdateUserForm } from "./update-user-modal/updateUserForm"
 import { useUpdateUserFormData } from "@hooks/updateUserFormDataHook"
 import { userIsAdmin } from "@hooks/adminRoleHook"
 import { useUser } from "@hooks/useUserHook"
+import { UploadAvatarForm } from "./upload-avatar-modal/uploadAvatarForm"
 
 const Profile = () => {
   const navigate = useNavigate()
@@ -28,14 +29,24 @@ const Profile = () => {
   const { departmentsData, positionsData, loadingData } =
     useUpdateUserFormData()
 
-  const [open, setOpen] = useState(false)
+  const [openUpdateUser, setOpenUpdateUser] = useState(false)
 
   const handleUpdateUser = () => {
-    setOpen(true)
+    setOpenUpdateUser(true)
   }
 
-  const handleModalClose = () => {
-    setOpen(false)
+  const handleUpdateUserModalClose = () => {
+    setOpenUpdateUser(false)
+  }
+
+  const [openUploadAvatar, setOpenUploadAvatar] = useState(false)
+
+  const handleUploadAvatar = () => {
+    setOpenUploadAvatar(true)
+  }
+
+  const handleUploadAvatarModalClose = () => {
+    setOpenUploadAvatar(false)
   }
 
   return (
@@ -57,6 +68,7 @@ const Profile = () => {
             <Styled.UserAvatar
               src={data?.user.profile.avatar}
               sx={{ ":hover": { cursor: isActive ? "pointer" : "default" } }}
+              onClick={handleUploadAvatar}
             ></Styled.UserAvatar>
             <Styled.UserInfoWrapper>
               <Styled.UserInfoColumn>
@@ -93,15 +105,26 @@ const Profile = () => {
           </Styled.PaperWrapper>
 
           <BasicModal
-            open={open}
-            onClose={handleModalClose}
+            open={openUpdateUser}
+            onClose={handleUpdateUserModalClose}
             modalTitle="Update profile"
           >
             <UpdateUserForm
-              handleClose={handleModalClose}
+              handleClose={handleUpdateUserModalClose}
               user={user}
               positionsData={positionsData}
               departmentsData={departmentsData}
+              id={id}
+            />
+          </BasicModal>
+          <BasicModal
+            open={openUploadAvatar}
+            onClose={handleUploadAvatarModalClose}
+            modalTitle="Upload profile picture"
+          >
+            <UploadAvatarForm
+              handleClose={handleUploadAvatarModalClose}
+              user={user}
               id={id}
             />
           </BasicModal>

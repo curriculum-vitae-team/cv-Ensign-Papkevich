@@ -34,6 +34,17 @@ class SecurityService {
     this.storage.removeItem(StorageKeys.User)
     this.storage.removeItem(StorageKeys.AccessToken)
   }
+
+  updateAvatar(url: string) {
+    const user = this.user$()!
+    this.user$({
+      ...user,
+      profile: {
+        ...user.profile,
+        avatar: url,
+      },
+    })
+  }
 }
 
 export const securityService = new SecurityService(sessionStorage)
