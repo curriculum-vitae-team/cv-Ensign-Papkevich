@@ -8,7 +8,7 @@ import { TableSearch } from "../../templates/table/components/table-search/table
 import { createTable } from "../../templates/table"
 import { IUser } from "../../../interfaces/user.interface"
 import { BasicModal } from "../../templates/modal/modal"
-import { CreateUserForm } from "./modalComponent/createUserForm"
+import { CreateUserForm } from "./create-user-modal/createUserForm"
 
 const Table = createTable<IUser>()
 

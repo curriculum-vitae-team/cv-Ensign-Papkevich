@@ -1,7 +1,7 @@
 import { ApolloProvider } from "@apollo/client"
 import { CssBaseline, ThemeProvider } from "@mui/material/"
-import { client } from "../../graphql/client"
-import { Router } from "../router/router"
+import { client } from "@graphql/client"
+import { Router } from "@router/router"
 import { theme } from "./app.theme"
 
 export const App = () => {

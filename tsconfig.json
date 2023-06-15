@@ -20,6 +20,8 @@
       "@interfaces/*": ["src/interfaces/*"],
       "@graphql/*": ["src/graphql/*"],
       "@templates/*": ["src/components/templates/*"],
+      "@router/*": ["src/components/router/*"],
+      "@ui/*": ["src/components/ui/*"],
       "@pages/*": ["src/components/pages/*"],
       "@hooks/*": ["src/hooks/*"],
       "@constants/*": ["src/constants/*"],

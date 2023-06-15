@@ -19,3 +19,7 @@ export type UpdateUserInput = {
 export type UpdateUserResult = {
   updatedUser: IUser
 }
+
+export type AvatarResult = {
+  uploadAvatar: string
+}

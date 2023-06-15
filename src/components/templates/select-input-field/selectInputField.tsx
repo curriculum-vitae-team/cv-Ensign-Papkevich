@@ -1,24 +1,30 @@
 import { TextField, MenuItem } from "@mui/material"
+import { Controller } from "react-hook-form"
 
-export const SelectInputField = ({
-  label,
-  register,
-  registerName,
-  data,
-  ...props
-}) => {
+const SelectInputField = ({ label, data, name, control, ...props }: any) => {
   return (
-    <TextField
-      {...props}
-      select
-      label={label}
-      inputProps={register && registerName && register(registerName)}
-    >
-      {data?.map(({ id, name }) => (
-        <MenuItem key={id} value={id}>
-          {name}
-        </MenuItem>
-      ))}
-    </TextField>
+    <Controller
+      name={name}
+      control={control}
+      render={({ field }) => (
+        <TextField
+          {...props}
+          {...field}
+          select
+          label={label}
+          // inputProps={register && registerName && register(registerName)}
+          // {...register(registerName)}
+        >
+          <MenuItem value="">Not Selected</MenuItem>
+          {data?.map(({ id, name }) => (
+            <MenuItem key={id} value={id}>
+              {name}
+            </MenuItem>
+          ))}
+        </TextField>
+      )}
+    />
   )
 }
+
+export default SelectInputField

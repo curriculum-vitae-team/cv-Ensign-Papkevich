@@ -9,10 +9,10 @@ import {
   Button,
 } from "@mui/material"
 import { Item, TableProps } from "./table.types"
-import { SortingOrder } from "../../../constants/tableSort.constant"
+import { SortingOrder } from "@constants/tableSort.constant"
 import { sortTableItems, searchItems } from "./helpers/helpers"
 import { TableSearchContext, TableSortContext } from "./table.context"
-import { userIsAdmin } from "../../../hooks/adminRoleHook"
+import { userIsAdmin } from "@hooks/adminRoleHook"
 
 const Table = <T extends Item>({
   items,

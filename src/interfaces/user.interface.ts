@@ -1,5 +1,5 @@
 import { IUserProfile } from "./profile.interface"
-import { UserRole } from "../constants/userRole.constant"
+import { UserRole } from "@constants/userRole.constant"
 import { IDepartment } from "./department.interface"
 import { IPosition } from "./position.interface"
 

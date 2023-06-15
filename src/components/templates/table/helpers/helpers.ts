@@ -1,5 +1,5 @@
 import { Path, get } from "react-hook-form"
-import { SortingOrder } from "../../../../constants/tableSort.constant"
+import { SortingOrder } from "@constants/tableSort.constant"
 import { Item } from "../table.types"
 
 export const sortTableItems =

@@ -1,7 +1,7 @@
 import { TableCell, TableRow } from "@mui/material"
 import { memo } from "react"
-import { IUser } from "../../../../interfaces/user.interface"
-import { createSortLabel } from "../../../templates/table/components/sort-label"
+import { IUser } from "@interfaces/user.interface"
+import { createSortLabel } from "@templates/table/components/sort-label"
 
 const TableHeadCells = () => {
   return (
@@ -15,10 +15,10 @@ const TableHeadCells = () => {
       </TableCell>
       <TableCell>{createSortLabel<IUser>("email", "Email")}</TableCell>
       <TableCell>
-        {createSortLabel<IUser>("department_name", "Department")}
+        {createSortLabel<IUser>("department.name", "Department")}
       </TableCell>
       <TableCell>
-        {createSortLabel<IUser>("position_name", "Position")}
+        {createSortLabel<IUser>("position.name", "Position")}
       </TableCell>
     </TableRow>
   )

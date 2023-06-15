@@ -1,6 +1,6 @@
 import { makeVar } from "@apollo/client"
-import { StorageKeys } from "../constants/StorageKeys.constants"
-import { IUser } from "../interfaces/user.interface"
+import { StorageKeys } from "@constants/StorageKeys.constants"
+import { IUser } from "@interfaces/user.interface"
 
 class SecurityService {
   access_token$ = makeVar("")
@@ -33,6 +33,17 @@ class SecurityService {
     this.access_token$("")
     this.storage.removeItem(StorageKeys.User)
     this.storage.removeItem(StorageKeys.AccessToken)
+  }
+
+  updateAvatar(url: string) {
+    const user = this.user$()!
+    this.user$({
+      ...user,
+      profile: {
+        ...user.profile,
+        avatar: url,
+      },
+    })
   }
 }
 

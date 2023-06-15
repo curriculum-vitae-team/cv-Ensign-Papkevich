@@ -1,4 +1,5 @@
 import { MouseEvent, useState, useCallback } from "react"
+import { useReactiveVar } from "@apollo/client"
 import {
   Paper,
   MenuItem,
@@ -7,8 +8,7 @@ import {
   Menu,
   Divider,
 } from "@mui/material"
-import { useReactiveVar } from "@apollo/client"
-import { securityService } from "../../../security/securityService"
+import { securityService } from "@security/securityService"
 
 export const UserMenuList = () => {
   const user = useReactiveVar(securityService.user$)
