@@ -111,7 +111,7 @@ const Profile = () => {
           >
             <UpdateUserForm
               handleClose={handleUpdateUserModalClose}
-              user={user}
+              user={data?.user}
               positionsData={positionsData}
               departmentsData={departmentsData}
               id={id}

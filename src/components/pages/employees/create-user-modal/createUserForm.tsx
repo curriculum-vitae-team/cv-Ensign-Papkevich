@@ -3,7 +3,7 @@ import { useMutation } from "@apollo/client"
 import { Button, TextField } from "@mui/material"
 import { regExpForEmail } from "@constants/RegExp.constants"
 import { Form } from "./createUserForm.styles"
-import { SelectInputField } from "@templates/select-input-field/selectInputField"
+import { SelectInputField } from "@templates/select-input-field"
 import { useCreateUserFormData } from "@hooks/createUserFormDataHook"
 import { Spinner } from "@ui/spinner"
 import { CREATE_USER_MUTATION } from "@graphql/mutations/createUser"
@@ -15,6 +15,7 @@ export const CreateUserForm = ({ handleClose }) => {
     register,
     handleSubmit,
     formState: { errors },
+    control,
   } = useForm()
 
   const { loading, departmentsData, positionsData, rolesData } =
@@ -26,6 +27,7 @@ export const CreateUserForm = ({ handleClose }) => {
     })
 
   const onSubmit = async (inputs) => {
+    console.log(inputs)
     try {
       await createUser({
         variables: {
@@ -126,24 +128,24 @@ export const CreateUserForm = ({ handleClose }) => {
 
           <SelectInputField
             label="Position"
-            registerName="position"
-            register={register}
+            name="position"
+            control={control}
             defaultValue={""}
             data={positionsData!.positions}
           />
 
           <SelectInputField
             label="Department"
-            registerName="department"
-            register={register}
+            name="department"
+            control={control}
             defaultValue={""}
             data={departmentsData!.departments}
           />
 
           <SelectInputField
             label="User Role"
-            registerName="role"
-            register={register}
+            name="role"
+            control={control}
             defaultValue={"employee"}
             data={rolesData}
           />

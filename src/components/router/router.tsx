@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import { SecurityObserver } from "@security/securityObserver"
 import { Layout } from "@templates/layout"
 import { Signup } from "@pages/auth/signup/signup"
@@ -20,6 +20,7 @@ export const Router = () => {
             <Route path=":id/profile" element={<Profile />} />
           </Route>
         </Route>
+        <Route path="*" element={<Navigate to="/auth/login" />} />
       </Routes>
     </BrowserRouter>
   )

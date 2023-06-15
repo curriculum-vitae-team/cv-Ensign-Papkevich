@@ -4,7 +4,7 @@ import { Button, TextField } from "@mui/material"
 import { IUser } from "@interfaces/user.interface"
 import { Spinner } from "@ui/spinner"
 import { Form } from "./updateUserForm.styles"
-import { SelectInputField } from "@templates/select-input-field/selectInputField"
+import { SelectInputField } from "@templates/select-input-field"
 import {
   UpdateUserInput,
   UpdateUserResult,
@@ -20,11 +20,11 @@ export const UpdateUserForm = ({
   departmentsData,
   id,
 }) => {
-  const setDefaultValues = (user: IUser | undefined) => ({
+  const setDefaultValues = (user?: IUser) => ({
     first_name: user?.profile.first_name || "",
     last_name: user?.profile.last_name || "",
-    department: user?.department?.name || "",
-    position: user?.position?.name || "",
+    department: user?.department?.id || "",
+    position: user?.position?.id || "",
   })
 
   const [updateUser, { loading }] = useMutation<
@@ -44,6 +44,7 @@ export const UpdateUserForm = ({
     handleSubmit,
     formState: { errors },
     reset,
+    control,
   } = useForm({
     defaultValues: setDefaultValues(user),
   })
@@ -103,15 +104,15 @@ export const UpdateUserForm = ({
 
           <SelectInputField
             label="Position"
-            registerName="position"
-            register={register}
+            name="position"
+            control={control}
             data={positionsData!.positions}
           />
 
           <SelectInputField
             label="Department"
-            registerName="department"
-            register={register}
+            name="department"
+            control={control}
             data={departmentsData!.departments}
           />
 
