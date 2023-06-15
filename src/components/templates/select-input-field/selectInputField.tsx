@@ -7,14 +7,7 @@ const SelectInputField = ({ label, data, name, control, ...props }: any) => {
       name={name}
       control={control}
       render={({ field }) => (
-        <TextField
-          {...props}
-          {...field}
-          select
-          label={label}
-          // inputProps={register && registerName && register(registerName)}
-          // {...register(registerName)}
-        >
+        <TextField {...props} {...field} select label={label}>
           <MenuItem value="">Not Selected</MenuItem>
           {data?.map(({ id, name }) => (
             <MenuItem key={id} value={id}>

@@ -1,4 +1,5 @@
 import { IUser } from "../../interfaces/user.interface"
+import { ILanguage } from "../../interfaces/language.interface"
 
 export type CreateUserResult = {
   user: IUser
@@ -22,4 +23,8 @@ export type UpdateUserResult = {
 
 export type AvatarResult = {
   uploadAvatar: string
+}
+
+export type CreateLanguageResult = {
+  createLanguage: ILanguage
 }
