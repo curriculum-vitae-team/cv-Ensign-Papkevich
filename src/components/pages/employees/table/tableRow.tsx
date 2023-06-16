@@ -40,8 +40,8 @@ const TableRowCells = ({ item }: TableRowProps<IUser>) => {
       <TableCell>{item.profile?.first_name}</TableCell>
       <TableCell>{item.profile?.last_name}</TableCell>
       <TableCell>{item.email}</TableCell>
-      <TableCell>{item.department?.name}</TableCell>
-      <TableCell>{item.position?.name}</TableCell>
+      <TableCell>{item.department_name}</TableCell>
+      <TableCell>{item.position_name}</TableCell>
       <TableCell>
         <SelectedUserMenu>
           <MenuItem onClick={navigateToUserProfile}>Profile</MenuItem>
