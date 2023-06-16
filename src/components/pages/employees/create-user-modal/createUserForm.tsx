@@ -142,26 +142,13 @@ export const CreateUserForm = ({ handleClose }) => {
             data={departmentsData!.departments}
           />
 
-          {/* <SelectInputField
+          <SelectInputField
             label="User Role"
             name="role"
             control={control}
             defaultValue={"employee"}
             data={rolesData}
-          /> */}
-          <TextField
-            select
-            fullWidth
-            label="Role"
-            defaultValue=""
-            inputProps={register("role")}
-          >
-            {rolesData.map((option) => (
-              <MenuItem key={option.id} value={option.id}>
-                {option.name}
-              </MenuItem>
-            ))}
-          </TextField>
+          />
 
           <Button type="submit" variant="contained" color="secondary">
             Submit
