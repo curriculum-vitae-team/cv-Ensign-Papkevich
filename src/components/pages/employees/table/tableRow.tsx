@@ -9,7 +9,6 @@ import { useMutation } from "@apollo/client"
 import { DELETE_USER_MUTATION } from "../../../../graphql/mutations/deleteUser"
 
 const TableRowCells = ({ item }: TableRowProps<IUser>) => {
-  console.log(item)
   const navigate = useNavigate()
   const navigateToUserProfile = () => {
     navigate(`/employees/${item.id}/profile`)
