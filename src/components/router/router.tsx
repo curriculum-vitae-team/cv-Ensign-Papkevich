@@ -6,6 +6,7 @@ import { Login } from "@pages/auth/login/login"
 import { Employees } from "@pages/employees"
 import { Profile } from "@pages/profile"
 import { Languages } from "@pages/languages"
+import { Statistics } from "@pages/statistics"
 
 export const Router = () => {
   return (
@@ -22,6 +23,9 @@ export const Router = () => {
           </Route>
           <Route path="/languages" element={<SecurityObserver />}>
             <Route path="" element={<Languages />} />
+          </Route>
+          <Route path="/main" element={<SecurityObserver />}>
+            <Route path="" element={<Statistics />} />
           </Route>
         </Route>
         <Route path="*" element={<Navigate to="/auth/login" />} />

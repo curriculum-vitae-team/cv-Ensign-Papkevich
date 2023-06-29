@@ -1,5 +1,7 @@
 import { MouseEvent, useState, useCallback } from "react"
+import { useNavigate } from "react-router-dom"
 import { useReactiveVar } from "@apollo/client"
+
 import {
   Paper,
   MenuItem,
@@ -11,6 +13,7 @@ import {
 import { securityService } from "@security/securityService"
 
 export const UserMenuList = () => {
+  const navigate = useNavigate()
   const user = useReactiveVar(securityService.user$)
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null)
@@ -27,7 +30,10 @@ export const UserMenuList = () => {
   const handleLogout = useCallback(() => {
     securityService.clearStorage()
   }, [])
-  // TO_DO: Add navigation to pages onClick
+
+  const handleProfileClick = () => {
+    navigate(`employees/${user?.id}/profile/`)
+  }
 
   return (
     <>
@@ -72,8 +78,7 @@ export const UserMenuList = () => {
           transformOrigin={{ horizontal: "right", vertical: "top" }}
           anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         >
-          <MenuItem>Profile</MenuItem>
-          <MenuItem>Settings</MenuItem>
+          <MenuItem onClick={handleProfileClick}>Profile</MenuItem>
           <Divider />
           <MenuItem onClick={handleLogout}>Logout</MenuItem>
         </Menu>

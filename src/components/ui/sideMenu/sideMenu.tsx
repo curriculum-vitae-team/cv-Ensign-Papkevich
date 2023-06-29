@@ -40,12 +40,12 @@ export default function SideBar() {
       <Styled.SideBarHeader>
         <PeopleAltIcon />
         <Typography variant="h6" sx={{ mt: "-2%" }}>
-          Employees
+          Menu
         </Typography>
       </Styled.SideBarHeader>
-      {generateList(["Projects", "CVs"])}
+      {generateList(["Main", "Employees", "Languages"])}
       <Divider />
-      {generateList(["Departments", "Positions", "Skills", "Languages"])}
+      {generateList(["Departments", "Positions", "Skills", "Projects", "CVs"])}
     </Box>
   )
 

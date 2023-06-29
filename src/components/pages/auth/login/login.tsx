@@ -23,7 +23,7 @@ export const Login = () => {
   const [execQuery] = useLazyQuery(LOGIN_QUERY, {
     onCompleted: ({ login }) => {
       securityService.writeToStorage(login.user, login.access_token)
-      navigate("/employees")
+      navigate("/main")
     },
   })
 
