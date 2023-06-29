@@ -43,9 +43,11 @@ export default function SideBar() {
           Menu
         </Typography>
       </Styled.SideBarHeader>
-      {generateList(["Main", "Employees", "Languages"])}
+      {generateList(["Main"])}
       <Divider />
-      {generateList(["Departments", "Positions", "Skills", "Projects", "CVs"])}
+      {generateList(["Employees", "Departments", "Positions"])}
+      <Divider />
+      {generateList(["Languages", "Skills"])}
     </Box>
   )
 
