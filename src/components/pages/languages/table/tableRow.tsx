@@ -30,6 +30,9 @@ const TableRowCells = ({ item }: TableRowProps<ILanguage>) => {
       <TableCell>{item.name}</TableCell>
       <TableCell>{item.native_name}</TableCell>
       <TableCell>{item.iso2}</TableCell>
+      <TableCell />
+      <TableCell />
+      <TableCell />
       <TableCell>
         <SelectedLanguageMenu>
           <MenuItem disabled={!isAdmin} onClick={handleDeleteLanguage}>

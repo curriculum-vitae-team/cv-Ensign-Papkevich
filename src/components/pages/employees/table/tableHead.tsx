@@ -20,6 +20,9 @@ const TableHeadCells = () => {
       <TableCell>
         {createSortLabel<IUser>("position.name", "Position")}
       </TableCell>
+      <TableCell />
+      <TableCell />
+      <TableCell />
     </TableRow>
   )
 }

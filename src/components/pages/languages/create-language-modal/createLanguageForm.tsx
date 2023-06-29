@@ -22,7 +22,6 @@ export const CreateLanguageForm = ({ handleClose }) => {
   )
 
   const onSubmit = async (inputs) => {
-    console.log(inputs)
     try {
       await createLanguage({
         variables: {

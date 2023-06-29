@@ -27,7 +27,6 @@ export const CreateUserForm = ({ handleClose }) => {
     })
 
   const onSubmit = async (inputs) => {
-    console.log(inputs)
     try {
       await createUser({
         variables: {

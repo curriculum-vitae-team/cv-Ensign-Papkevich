@@ -1,8 +1,8 @@
 import { useQuery } from "@apollo/client"
 import { UserRole } from "@constants/userRole.constant"
 import {
-  DepartmentQueryReturn,
-  PositionQueryReturn,
+  DepartmentQueryResult,
+  PositionQueryResult,
 } from "@graphql/queries/queries.types"
 import { DEPARTMENTS_QUERY } from "@graphql/queries/departments"
 import { POSITIONS_QUERY } from "@graphql/queries/positions"
@@ -12,13 +12,13 @@ export const useCreateUserFormData = () => {
     loading: departmentsLoading,
     error: departmentsError,
     data: departmentsData,
-  } = useQuery<DepartmentQueryReturn>(DEPARTMENTS_QUERY)
+  } = useQuery<DepartmentQueryResult>(DEPARTMENTS_QUERY)
 
   const {
     loading: positionsLoading,
     error: positionsError,
     data: positionsData,
-  } = useQuery<PositionQueryReturn>(POSITIONS_QUERY)
+  } = useQuery<PositionQueryResult>(POSITIONS_QUERY)
 
   const rolesData = [
     { id: UserRole.Admin as string, name: UserRole.Admin as string },
