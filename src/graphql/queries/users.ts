@@ -12,6 +12,7 @@ export const USERS_QUERY = gql`
         full_name
         avatar
       }
+      created_at
       department_name
       position_name
       role

@@ -10,6 +10,8 @@ export interface IUser {
   is_verified: boolean
   profile: IUserProfile
   department: IDepartment
+  department_name?: string
   position: IPosition
+  position_name?: string
   role: UserRole
 }

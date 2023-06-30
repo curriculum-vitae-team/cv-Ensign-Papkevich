@@ -6,14 +6,15 @@ const SelectInputField = ({ label, data, name, control, ...props }: any) => {
     <Controller
       name={name}
       control={control}
+      defaultValue=""
       render={({ field }) => (
         <TextField
           {...props}
           {...field}
           select
           label={label}
-          // inputProps={register && registerName && register(registerName)}
-          // {...register(registerName)}
+          onChange={(e) => field.onChange(e.target.value)}
+          value={field.value}
         >
           <MenuItem value="">Not Selected</MenuItem>
           {data?.map(({ id, name }) => (

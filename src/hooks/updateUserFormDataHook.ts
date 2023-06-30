@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client"
 import {
-  DepartmentQueryReturn,
+  DepartmentQueryResult,
   PositionQueryReturn,
 } from "@graphql/queries/queries.types"
 import { DEPARTMENTS_QUERY } from "@graphql/queries/departments"
@@ -11,7 +11,7 @@ export const useUpdateUserFormData = () => {
     loading: departmentsLoading,
     error: departmentsError,
     data: departmentsData,
-  } = useQuery<DepartmentQueryReturn>(DEPARTMENTS_QUERY)
+  } = useQuery<DepartmentQueryResult>(DEPARTMENTS_QUERY)
 
   const {
     loading: positionsLoading,
